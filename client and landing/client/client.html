@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Channel Your Doctor</title>
+    <link rel="stylesheet" href="clientStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+
+        <img src="/first/landing/Elements/images/logo.png" alt="Logo" class="logo">
+
+        <ul>
+            <li><a href="/first/landing/landing.html">Home</a></li>
+            <li><a href="/landing/landing.html#service_container">About Us</a></li>
+            <li><a href="#">client</a></li>
+            <li><a href="/first/staff/staff.html">Staff</a></li>
+            <li><a href="#">Doctor</a></li>
+            <li><a href="/landing/landing.html#map">Contact us</a></li>
+        </ul>
+
+
+        <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-bar">
+            <button class="search-btn">Search</button>
+        </div>
+
+        <button class="sign-in-btn">Sign In</button>
+    </nav>
+
+
+
+    <header>
+        <div class="logo">
+            <h1>Channel Your Doctor</h1>
+        </div>
+
+       
+    </header>
+
+    <!-- Search Container Section -->
+    <div class="Dsearch-container">
+        <h2>Find Your Doctor</h2>
+        <p class="search-description">Search for doctors based on specialization, hospital, or location.</p>
+
+        <div class="search-form">
+            <label for="doctor-name">Doctor - Max 20 Characters</label>
+            <input id="doctor-name" type="text" maxlength="20" placeholder="Enter doctor's name">
+
+            <label for="specialization">Select Specialization</label>
+            <select id="specialization">
+                <option>Any Specialization</option>
+                <option>Cardiology</option>
+                <option>Dermatology</option>
+                <option>Neurology</option>
+                <option>Psychiatry</option>
+                <option>Emergency Medicine</option>
+            </select>
+
+            <label for="appointment-date">Select Date</label>
+            <input id="appointment-date" type="date">
+
+            <button>🔍 Search</button>
+        </div>
+    </div>
+
+    <!-- Doctor List Section -->
+    <section class="doctor-list">
+        <h4>Doctors Available</h4>
+
+        <div class="doctor-card">
+            <img src="/first/client/images/doctor1.png" alt="Doctor 1">
+            <h3>Dr. John Doe</h3>
+            <p>Specialization: Cardiology</p>
+            <p>Hospital: Hospital A</p>
+            <button>View Profile</button>
+        </div>
+
+        <div class="doctor-card">
+            <img src="/first/client/images/doctor2.jpg" alt="Doctor 2">
+            <h3>Dr. Jane Smith</h3>
+            <p>Specialization: Dermatology</p>
+            <p>Hospital: Hospital B</p>
+            <button>View Profile</button>
+        </div>
+
+        <div class="doctor-card">
+            <img src="/first/client/images/doctor3.jpg" alt="Doctor 1">
+            <h3>Dr. John Doe</h3>
+            <p>Specialization: Cardiology</p>
+            <p>Hospital: Hospital A</p>
+            <button>View Profile</button>
+        </div>
+    </section>
+
+   
+    <div class="inquiry-box" id="inquiry-box">
+        <h3>Send an Inquiry</h3>
+        <p class="inquiry-description">If you have any questions or inquiries, feel free to reach out.</p>
+        <input type="text" placeholder="Enter your name" required>
+        <input type="tel" placeholder="Enter your contact number" required>
+        <textarea placeholder="Enter your message" required></textarea>
+        <button type="submit">Send Message</button>
+    </div>
+
+ 
+    <footer>
+        <p>&copy; 2025 Channel Your Doctor. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

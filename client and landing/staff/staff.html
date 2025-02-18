@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Management</title>
+    <link rel="stylesheet" href="stff.css">
+
+
+
+    
+</head>
+<body>
+
+    <nav>
+        <img src="/first/landing/Elements/images/logo.png" alt="Logo" class="logo">
+        <ul>
+            <li><a href="/first/landing/landing.html">Home</a></li>
+            <li><a href="/first/landing/landing.html#service_container">About Us</a></li>
+            <li><a href="/first/client/client.html">Client</a></li>
+            <li><a href="#">Staff</a></li>
+            <li><a href="#">Doctor</a></li>
+            <li><a href="/first/landing/landing.html#map">Contact Us</a></li>
+        </ul>
+
+        <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-bar">
+            <button class="search-btn">Search</button>
+        </div>
+
+        <button class="sign-in-btn">Sign In</button>
+    </nav>
+
+    <header>
+
+        <div class="logo">
+            <h1>Doctor Management</h1>
+        </div>
+    </header>
+
+
+    <section class="container">
+       
+        <form id="doctor-form">
+            <div class="form-group">
+                <label for="doctor-name">Doctor's Name</label>
+                <input type="text" id="doctor-name" name="doctor-name" required placeholder="Enter doctor's name">
+            </div>
+            <div class="form-group">
+                <label for="doctor-specialty">Specialty</label>
+                <input type="text" id="doctor-specialty" name="doctor-specialty" required placeholder="Enter specialty">
+            </div>
+            <div class="form-group">
+                <label for="doctor-image" class="file-label">Upload Profile Picture</label>
+                <input type="file" id="doctor-image" name="doctor-image" accept="image/*" required class="file-input">
+                <span id="file-name">No file chosen</span>
+                <div id="image-box" class="image-box">
+                    <img id="uploaded-image" src="" alt="Uploaded Image" />
+                </div>
+            </div>
+            <button type="submit">Add Doctor</button>
+            <button id="remove-doctor-btn">Remove Doctor</button>
+        </form>
+    </section>
+
+    <!-- View Appointments Section -->
+    <section id="appointments-section">
+        <h2>View Appointments</h2>
+        <table class="appointments-table">
+            <thead>
+                <tr>
+                    <th>Client ID</th>
+                    <th>Name</th>
+                    <th>Appointment No.</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                   
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                   
+                </tr>
+              
+            </tbody>
+        </table>
+    </section>
+
+    <section id="inquiries-section">
+        <h2>Inquiries</h2>
+    
+        <div class="inquiry-card">
+            <div class="form-group">
+                <label for="client-id">Client ID:</label>
+                <input type="text" id="client-id" value="12345" disabled>
+            </div>
+            <div class="form-group">
+                <label for="client-name">Client Name:</label>
+                <input type="text" id="client-name" value="John Doe" disabled>
+            </div>
+            <div class="form-group">
+                <label for="client-inquiry">Inquiry Sent by Client:</label>
+                <textarea id="client-inquiry" rows="4" disabled>What is the doctor's availability next week?</textarea>
+            </div>
+            <form class="reply-form">
+                <label for="reply-message">Reply:</label>
+                <textarea id="reply-message" name="reply-message" placeholder="Write your reply here..." rows="4" required></textarea>
+                <button type="submit">Send Reply</button>
+            </form>
+        </div>
+    
+    </section>
+    
+
+    <script>
+       
+        document.getElementById('doctor-image').addEventListener('change', function() {
+            const file = document.getElementById('doctor-image').files[0];
+            const imageBox = document.getElementById('image-box');
+            const uploadedImage = document.getElementById('uploaded-image');
+            const fileName = document.getElementById('file-name');
+
+            if (file) {
+                fileName.textContent = file.name;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImage.src = e.target.result;
+                    imageBox.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('doctor-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('doctor-name').value;
+            const specialty = document.getElementById('doctor-specialty').value;
+            const image = document.getElementById('doctor-image').files[0];
+
+            const doctorCard = document.createElement('div');
+            doctorCard.classList.add('doctor-card');
+
+            const doctorImage = document.createElement('img');
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                doctorImage.src = e.target.result;
+            };
+            reader.readAsDataURL(image);
+
+            const doctorName = document.createElement('h4');
+            doctorName.textContent = name;
+
+            const doctorSpecialty = document.createElement('p');
+            doctorSpecialty.textContent = `Specialty: ${specialty}`;
+
+            doctorCard.appendChild(doctorImage);
+            doctorCard.appendChild(doctorName);
+            doctorCard.appendChild(doctorSpecialty);
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove Doctor';
+            removeButton.onclick = function () {
+                doctorCard.remove();
+            };
+            doctorCard.appendChild(removeButton);
+
+            document.getElementById('doctors-container').appendChild(doctorCard);
+
+            document.getElementById('doctor-form').reset();
+            document.getElementById('file-name').textContent = 'No file chosen';
+            document.getElementById('image-box').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

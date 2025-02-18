@@ -1,0 +1,354 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #053a72; /* Blue background */
+    padding: 20px 0;
+    color: white; /* Keep text white */
+    text-align: center;
+    border-radius: 10px;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: white;
+    color: rgb(19, 1, 1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease;
+}
+
+nav.hide {
+    top: -100px;
+}
+
+nav .logo {
+    height: 70px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-grow: 1;
+}
+
+nav ul li {
+    margin-left: 50px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(19, 1, 1);
+    font-weight: bold;
+    transition: color 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    color: #3498db;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 2px solid #3498db;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    height: 50px;
+}
+
+.search-bar {
+    padding: 10px;
+    border: none;
+    outline: none;
+    width: 250px;
+    font-size: 16px;
+}
+
+.search-btn {
+    background-color: #f39c12;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    height: 60px;
+    margin-top: 0;
+}
+
+.search-btn:hover {
+    background-color: #e67e22;
+}
+
+.sign-in-btn {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-left: 20px;
+    margin-top: 0;
+}
+
+.sign-in-btn:hover {
+    background-color: #3498db;
+}
+
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centers horizontally */
+    justify-content: center;  /* Centers vertically */
+    padding: 40px;  /* Increased padding for larger form */
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;  /* Ensures container is horizontally centered */
+    height: 100vh;  /* Makes the container take the full height of the viewport */
+}
+
+form {
+    background-color: #fff;
+    padding: 30px;  /* Increased padding for a bigger form */
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);  /* Slightly stronger shadow */
+    width: 100%;
+    font-size: 18px;  /* Increase font size in the form */
+}
+
+.form-group {
+    margin-bottom: 20px;  /* Increased space between form groups */
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;  /* Larger label font size */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;  /* Increased padding for input fields */
+    margin-top: 5px;
+    font-size: 16px;  /* Larger text in the input fields */
+    border: 1px solid #ccc;
+    border-radius: 6px;  /* Slightly larger border radius */
+}
+
+button {
+    padding: 15px 25px;  /* Increased button padding */
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;  /* Larger button text */
+    border-radius: 6px;  /* Larger border radius for the button */
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #3498db;
+}
+
+#remove-doctor-btn {
+    background-color: #e74c3c;
+    margin-top: 30px;  /* Increased margin */
+}
+
+#remove-doctor-btn:hover {
+    background-color: #c0392b;
+}
+
+#image-box {
+    margin-top: 15px;  /* Increased margin top */
+    width: 100%;
+    max-width: 180px;  /* Slightly larger image box */
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 10px;  /* Increased padding */
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#image-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+#file-name {
+    margin-top: 8px;  /* Increased margin */
+    font-size: 16px;  /* Larger file name font size */
+    color: #777;
+}
+
+
+/* View Appointments Section */
+#appointments-section {
+    margin-top: 40px;
+    padding: 20px;
+}
+#appointments-section h2{
+    
+    background-color: #0a0340; /* Blue background */
+    padding: 20px 0;
+    color: white; /* Keep text white */
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 80px;
+    width: 270px;
+    margin-left: 525px;
+}
+
+
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.appointments-table th,
+.appointments-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.appointments-table th {
+    background-color: #f39c12;
+    color: white;
+}
+
+.appointment-actions button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.appointment-actions button:hover {
+    background-color: #c0392b;
+}
+
+/* Inquiries Section */
+/* Inquiries Section */
+/* Inquiries Section */
+#inquiries-section {
+    padding: 30px;
+    margin-top: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#inquiries-section h2 {
+    font-size: 28px;
+    text-align: center;
+    color: #1913d2;
+    margin-bottom: 20px;
+}
+
+.inquiry-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.inquiry-card .form-group {
+    margin-bottom: 15px;
+}
+
+.inquiry-card label {
+    font-weight: bold;
+    color: #333;
+}
+
+.inquiry-card input,
+.inquiry-card textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.inquiry-card input:disabled,
+.inquiry-card textarea:disabled {
+    background-color: #f0f0f0;
+    border-color: #d1d1d1;
+}
+
+.reply-form button {
+    background-color: #27ae60;
+    padding: 12px 20px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reply-form button:hover {
+    background-color: #2ecc71;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #inquiries-section {
+        padding: 15px;
+    }
+
+    #inquiries-section h2 {
+        font-size: 24px;
+    }
+
+    .inquiry-card {
+        padding: 15px;
+    }
+
+    .inquiry-card label {
+        font-size: 14px;
+    }
+
+    .inquiry-card input,
+    .inquiry-card textarea {
+        font-size: 14px;
+    }
+
+    .reply-form button {
+        font-size: 14px;
+    }
+}
