@@ -15,15 +15,37 @@ body {
     min-height: 100vh;
 }
 
-/* Header Section */
+
 header {
     background: #15033f;
     color: #fff;
     padding: 20px;
     font-size: 24px;
+    position: relative; 
 }
 
-/* Hero Section */
+
+.log-in-btn {
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 17px 28px; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 22px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    position: absolute; 
+    top: 40px; 
+    right: 20px;
+    width: 140px;
+    font-weight: 300;
+}
+
+/* Change button color on hover */
+.log-in-btn:hover {
+    background-color: #45a049; /* Darker green when hovered */
+}
+
 .hero {
     background: url('https://source.unsplash.com/1600x900/?office,team') no-repeat center center/cover;
     color: white;
