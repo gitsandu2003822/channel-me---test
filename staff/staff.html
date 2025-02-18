@@ -21,6 +21,41 @@
     </header>
 
 
+    <section class="dashboard">
+        <div class="blue-tape">
+          
+            <a href="/staff/stafflanding.html#appointments-section" class="dashboard-item-link">
+                <button class="dashboard-item">
+                    <h2>View Appointments</h2>
+                </button>
+            </a>
+    
+           
+            <a href="/staff/staff.html" class="dashboard-item-link">
+                <button class="dashboard-item">
+                    <h2>Manage Doctors</h2>
+                </button>
+            </a>
+    
+           
+            <a href="/staff/staff.html#inquiry-section" class="dashboard-item-link">
+                <button class="dashboard-item">
+                    <h2>View Inquiries</h2>
+                </button>
+            </a>
+            
+
+            <a href="/staff/inquiry.html#reply-inquiry" class="dashboard-item-link">
+                <button class="dashboard-item">
+                    <h2> reply Inquiry</h2>
+                </button>
+            </a>
+        </div>
+    </section>
+    
+    
+
+
     <section class="container">
        
         <form id="doctor-form">
@@ -45,34 +80,68 @@
         </form>
     </section>
 
-    <!-- View Appointments Section -->
-  
-    <section id="inquiries-section">
-        <h2>Inquiries</h2>
-    
-        <div class="inquiry-card">
-            <div class="form-group">
-                <label for="client-id">Client ID:</label>
-                <input type="text" id="client-id" value="12345" disabled>
-            </div>
-            <div class="form-group">
-                <label for="client-name">Client Name:</label>
-                <input type="text" id="client-name" value="John Doe" disabled>
-            </div>
-            <div class="form-group">
-                <label for="client-inquiry">Inquiry Sent by Client:</label>
-                <textarea id="client-inquiry" rows="4" disabled>What is the doctor's availability next week?</textarea>
-            </div>
-            <form class="reply-form">
-                <label for="reply-message">Reply:</label>
-                <textarea id="reply-message" name="reply-message" placeholder="Write your reply here..." rows="4" required></textarea>
-                <button type="submit">Send Reply</button>
-            </form>
-        </div>
-    
+    <section id="inquiry-section">
+        <h2>View Inquiries</h2>
+        <table class="inquiry-table">
+            <thead>
+                <tr>
+                    <th>Client ID</th>
+                    <th>Name</th>
+                    <th>inquiry</th>
+                    <th>Date</th>
+                    <th>Reply</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="reply-btn">Reply</button></td>
+                   
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="reply-btn">Reply</button></td>
+                   
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="reply-btn">Reply</button></td>
+                   
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="reply-btn">Reply</button></td>
+                   
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="reply-btn">Reply</button></td>
+                   
+                </tr>
+            </tbody>
+        </table>
     </section>
-    
 
+
+
+  
+   
     <script>
        
         document.getElementById('doctor-image').addEventListener('change', function() {
@@ -133,5 +202,9 @@
             document.getElementById('image-box').style.display = 'none';
         });
     </script>
+
+<footer>
+    <p>&copy; 2025 Channel Your Doctor. All rights reserved.</p>
+</footer>
 </body>
 </html>

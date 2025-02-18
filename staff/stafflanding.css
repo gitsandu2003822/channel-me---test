@@ -17,7 +17,7 @@ body {
 
 /* Header Section */
 header {
-    background: #007bff;
+    background: #15033f;
     color: #fff;
     padding: 20px;
     font-size: 24px;
@@ -137,8 +137,9 @@ header {
 .appointments-table th,
 .appointments-table td {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 20px 10px; /* Increased padding to increase height */
     text-align: center;
+    vertical-align: middle; /* Ensures the text is vertically centered */
 }
 
 .appointments-table th {
