@@ -1,0 +1,140 @@
+/* General reset for spacing and font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    padding: 50px;
+    background-color: #091e1c; /* Soft green for healthcare */
+    color: white;
+    border-bottom: 2px solid #1d6f59; /* Darker green for border */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Login Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Login Button Styling */
+.login-btn {
+    background-color: #e76f51; /* Warm coral color */
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #f4a261; /* Lighter coral color */
+}
+
+/* Dashboard Section */
+.dashboard {
+    padding: 20px;
+    margin-left: 270px;
+}
+
+.blue-tape {
+    display: flex;
+    flex-wrap: wrap; /* Ensures the buttons can wrap to new lines */
+}
+
+.dashboard-item-link {
+    text-decoration: none;
+}
+
+.dashboard-item {
+    background-color: #044660; /* Darker blue for buttons */
+    color: white;
+    padding: 20px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 245px; /* Set width for consistent button size */
+    text-align: center;
+    margin: 50px; /* Decrease the margin to reduce the space between buttons */
+}
+
+.dashboard-item h2 {
+    margin: 0; /* Remove margin from h2 */
+}
+
+.dashboard-item:hover {
+    background-color: #033c4a; /* Darker shade for hover effect */
+}
+
+.dashboard-item h2 {
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+/* CSS to style the .back div and the background image */
+.back {
+    height: 75vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    text-align: left;
+    padding-left: 2rem;
+}
+.hero-text {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 90px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 200px;
+    opacity: 0; /* Initially hidden */
+    animation: slideInRightToLeft 2s ease-out forwards;
+}
+
+/* Keyframe Animation */
+@keyframes slideInRightToLeft {
+    0% {
+        transform: translateX(100%); /* Start from the right side */
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0); /* End at the original position */
+        opacity: 1;
+    }
+}
+
+  
+
+
+
+
+
+
