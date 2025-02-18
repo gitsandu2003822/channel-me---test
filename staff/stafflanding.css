@@ -60,10 +60,44 @@ header {
     margin-bottom: 10px;
 }
 
+/* Dashboard Section */
+.dashboard {
+    padding: 50px 20px;
+    text-align: center;
+
+}
+
+.blue-tape {
+    background: #007bff;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 0;
+}
+
+.dashboard-item {
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    width: 30%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.dashboard-item h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
 /* Footer */
 footer {
     background: #333;
     color: white;
     padding: 10px;
-    margin-top: 20px;
+    margin-bottom: 0;
+
 }
