@@ -292,22 +292,74 @@ nav ul li a:hover {
 }
 
 .inquiry-box button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 14px;
+    background-color: transparent; /* Remove the green background */
+    color: #007BFF; /* Set the text color to blue (or any color you prefer) */
+    border: 1px solid #007BFF; /* Add a blue border */
+    padding: 14px; /* Maintain padding */
     font-size: 16px;
     font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    width: 100%;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transitions for effects */
 }
 
 .inquiry-box button:hover {
-    background-color: #218838;
-    transform: scale(1.05);
+    background-color: #e7f1ff; /* Light blue background on hover for visibility */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
 }
+
+.image-preview {
+    position: relative; /* Positioning context for the close button */
+    width: 150px; /* Set a fixed width for the preview box */
+    height: 150px; /* Set a fixed height for the preview box */
+    border: 1px solid #007BFF; /* Blue border for the preview box */
+    border-radius: 10px; /* Rounded corners */
+    padding: 5px; /* Padding inside the preview box */
+    margin-top: 10px; /* Space above the preview box */
+    overflow: hidden; /* Hide overflow */
+    display: flex; /* Flexbox for image alignment */
+    align-items: center; /* Center image vertically */
+    justify-content: center; /* Center image horizontally */
+    background-color: #f4f7fa; /* Light background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.image-preview img {
+    max-width: 100%; /* Ensure the image fits within the box */
+    max-height: 100%; /* Ensure the image fits within the box */
+    object-fit: cover; /* Cover the entire box */
+    border-radius: 8px; /* Slightly round the image corners */
+}
+
+.close-btn {
+    position: absolute; /* Position it at the top right */
+    top: 2px; /* Space from the top (adjusted for smaller size) */
+    right: 2px; /* Space from the right (adjusted for smaller size) */
+    border: none; /* No border */
+    background: none; /* No background */
+    font-size: 14px; /* Smaller size of the close icon */
+    cursor: pointer; /* Pointer cursor on hover */
+    color: #ff0000; /* Red color for the close button */
+    padding: 0; /* No padding */
+    transition: color 0.3s; /* Smooth color transition on hover */
+    width: 20px; /* Fixed width */
+    height: 20px; /* Fixed height */
+    line-height: 20px; /* Center the cross vertically */
+    text-align: center; /* Center the cross horizontally */
+    border-radius: 50%; /* Rounded button */
+}
+
+.close-btn:hover {
+    color: #c00; /* Darker red on hover for visibility */
+}
+
+
+.close-btn:hover {
+    color: #c00; /* Darker red on hover for visibility */
+}
+
+
+
 /* Footer */
 footer {
     text-align: center;

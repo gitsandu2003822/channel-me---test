@@ -6,6 +6,7 @@
     <title>Channel Your Doctor</title>
     <link rel="stylesheet" href="clientStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+   
 </head>
 <body>
 
@@ -71,7 +72,7 @@
         <h4>Doctors Available</h4>
 
         <div class="doctor-card">
-            <img src="/first/client/images/doctor1.png" alt="Doctor 1">
+            <img src="/client and landing/client/images/doctor1.png" alt="Doctor 1">
             <h3>Dr. John Doe</h3>
             <p>Specialization: Cardiology</p>
             <p>Hospital: Hospital A</p>
@@ -79,7 +80,7 @@
         </div>
 
         <div class="doctor-card">
-            <img src="/first/client/images/doctor2.jpg" alt="Doctor 2">
+            <img src="/client and landing/client/images/doctor2.jpg" alt="Doctor 2">
             <h3>Dr. Jane Smith</h3>
             <p>Specialization: Dermatology</p>
             <p>Hospital: Hospital B</p>
@@ -87,7 +88,7 @@
         </div>
 
         <div class="doctor-card">
-            <img src="/first/client/images/doctor3.jpg" alt="Doctor 1">
+            <img src="/client and landing/client/images/doctor3.jpg" alt="Doctor 1">
             <h3>Dr. John Doe</h3>
             <p>Specialization: Cardiology</p>
             <p>Hospital: Hospital A</p>
@@ -99,12 +100,33 @@
     <div class="inquiry-box" id="inquiry-box">
         <h3>Send an Inquiry</h3>
         <p class="inquiry-description">If you have any questions or inquiries, feel free to reach out.</p>
+    
+        <input type="text" placeholder="Enter your ID" required>
         <input type="text" placeholder="Enter your name" required>
-        <input type="tel" placeholder="Enter your contact number" required>
+        <input type="tel" placeholder="Enter subject" required>
+    
+        <!-- New Date Input Field -->
+        <input type="date" placeholder="Select a date" required>
+    
+        <!-- New Image Upload Input Field -->
+        <input type="file" accept="image/*" id="image-input" required>
+    
+        <div class="image-preview" id="image-preview" style="display: none;">
+            <button id="remove-image" class="close-btn">&times;</button>
+            <img id="preview-image" src="" alt="Image Preview">
+        </div>
+
         <textarea placeholder="Enter your message" required></textarea>
         <button type="submit">Send Message</button>
+        
+        <!-- Container to display selected image -->
+       
     </div>
-
+    
+    <!-- Link to External JavaScript File -->
+    <script src="client.js"></script>
+    
+    
  
     <footer>
         <p>&copy; 2025 Channel Your Doctor. All rights reserved.</p>
