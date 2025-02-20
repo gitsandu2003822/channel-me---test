@@ -3,18 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff</title>
-  
-
-
-    
+    <title>Staff Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="stff.css">
 </head>
-<body>
-
+<body class="p-3">
+    <style>
+        .left-aligned {
+            text-align: left; 
+            margin-left: 0; 
+        }
+    </style>
     
-  
-<footer>
-    <p>&copy; 2025 Channel Your Doctor. All rights reserved.</p>
-</footer>
+    <div class="container">
+        <h2 class="fw-bold left-aligned">Staff Dashboard</h2>
+        
+        <div class="button-container mb-3">
+            <button class="btn btn-success">View Inquiries</button>
+            <button class="btn btn-primary">Add and Remove Doctors</button>
+            <button class="btn btn-warning">View Appointments</button>
+        </div>
+        <div class="d-flex justify-content-end flex-wrap">
+            <button class="btn btn-primary me-2">Update Login</button>
+            <button class="btn btn-danger">Logout</button>
+        </div>
+    </div>
+    
+        
+    <div class="d-flex justify-content-start">
+        <div class="input-group mb-3" style="max-width: 300px;">
+            <span class="input-group-text bg-primary text-white">
+                <i class="bi bi-calendar-event"></i>
+            </span>
+            <input type="date" class="form-control">
+            <button class="btn btn-primary" type="button">
+                <i class="bi bi-search"></i> Search
+            </button>
+        </div>
+    </div>
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Client ID</th>
+                        <th>Client Name</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTableBody">
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">No clients added yet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+       
+    </div>
+
+    <footer class="text-center mt-4 text-muted">
+        <p>&copy; 2025 Channel Your Doctor. All rights reserved.</p>
+    </footer>
 </body>
 </html>

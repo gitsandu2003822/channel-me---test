@@ -1,249 +1,84 @@
-/* Reset default browser styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* General Styles */
 body {
+    background-color: #f8f9fa;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-
-header {
-    background-color: #053a72; /* Blue background */
-    padding: 20px 0;
-    color: white; /* Keep text white */
-    text-align: center;
-    border-radius: 10px;
-}
-
-
-.dashboard {
-    padding: 50px 20px;
-    text-align: center;
-    flex-grow: 1;
-}
-
-.blue-tape {
-    background: #007bff;
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-/* Button Style */
-.dashboard-item-link {
-    text-decoration: none; /* Remove underline from anchor tags */
-}
-
-.dashboard-item {
-    background: #fff;
-    color: #333;
-    padding: 20px;
-    width: 97%;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    border: none; /* Make sure the button has no border */
-    text-align: center;
-    font-size: 23px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.dashboard-item h2 {
-    color: #007bff;
     margin: 0;
-    font-size: 18px;
 }
 
-.dashboard-item:hover {
-    background: #f1f1f1;
-}
-
-.dashboard-item:focus {
-    outline: none; /* Remove the outline on focus */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .dashboard-item {
-        width: 45%;
-    }
-
-    .blue-tape {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .dashboard-item {
-        width: 90%;
-    }
-}
-
+/* Container Styling */
 .container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+
+.container h2{
+
+    margin-left: 0;
+
+}
+
+/* Button Styling */
+.btn {
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* Align Buttons to Left Corner */
+.button-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;  /* Aligns content at the top */
-    padding: 40px;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;  /* Centers horizontally */
-    height: auto;  /* Makes the height adjust based on content */
-    margin-top: 0;  /* Removes the margin top to bring it up */
-}
-
-
-
-
-form {
-    background-color: #fff;
-    padding: 30px;  /* Increased padding for a bigger form */
-    border-radius: 8px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);  /* Slightly stronger shadow */
-    width: 100%;
-    font-size: 18px;  /* Increase font size in the form */
-}
-
-.form-group {
-    margin-bottom: 20px;  /* Increased space between form groups */
-}
-
-.form-group label {
-    font-weight: bold;
-    color: #333;
-    font-size: 16px;  /* Larger label font size */
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 15px;  /* Increased padding for input fields */
-    margin-top: 5px;
-    font-size: 16px;  /* Larger text in the input fields */
-    border: 1px solid #ccc;
-    border-radius: 6px;  /* Slightly larger border radius */
-}
-
-button {
-    padding: 15px 25px;  /* Increased button padding */
-    background-color: #2980b9;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;  /* Larger button text */
-    border-radius: 6px;  /* Larger border radius for the button */
+    justify-content: flex-start;
+    gap: 10px; /* Space between buttons */
     margin-top: 20px;
 }
 
-button:hover {
-    background-color: #3498db;
+/* Responsive Button Layout */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
-#remove-doctor-btn {
-    background-color: #e74c3c;
-    margin-top: 30px;  /* Increased margin */
+/* Table Styling */
+.table {
+    background: white;
+    overflow-x: auto;
 }
 
-#remove-doctor-btn:hover {
-    background-color: #c0392b;
+.table th {
+    background-color: #007bff !important;
+    color: white !important;
 }
 
-#image-box {
-    margin-top: 15px;  /* Increased margin top */
-    width: 100%;
-    max-width: 180px;  /* Slightly larger image box */
-    height: auto;
-    border: 1px solid #ccc;
-    padding: 10px;  /* Increased padding */
-    display: none;
-    justify-content: center;
-    align-items: center;
+/* Search Bar */
+.input-group-text {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
-#image-box img {
-    max-width: 100%;
-    height: auto;
-}
-
-#file-name {
-    margin-top: 8px;  /* Increased margin */
-    font-size: 16px;  /* Larger file name font size */
-    color: #777;
-}
-#inquiry-section h2 {
-    background-color: #0a0340; /* Purple background */
-    padding: 20px 0;
-    color: white; /* Keep text white */
-    text-align: center;
-    border-radius: 10px;
-    margin-bottom: 40px;  /* Reduced bottom margin for better spacing */
-    width: auto; /* Adjust width to auto for responsive design */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.inquiry-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 30px;  /* Added bottom margin for spacing */
-}
-
-.inquiry-table th,
-.inquiry-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-.inquiry-table th {
-    background-color: #f39c12;  /* Yellow header */
-    color: white;
-}
-
-.reply-btn {
-    background-color: #a81308;  /* Green background for reply button */
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.reply-btn:hover {
-    background-color: #fda796;  /* Lighter green on hover */
-}
-
-.appointment-actions {
-    text-align: center;
-}
-
-.appointment-actions button {
-    background-color: #e74c3c;  /* Red background */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.appointment-actions button:hover {
-    background-color: #c0392b;  /* Darker red on hover */
-}
+/* Footer */
 footer {
-    background: #333;
-    color: white;
-    padding: 10px;
-    margin-top: auto;
+    position: fixed; /* Fixed positioning */
+    bottom: 0; /* Aligns to the bottom */
+    left: 0;
+    right: 0; /* Make it full width */
+    margin-bottom: 0;
+    padding: 5px;
+    background: rgb(72, 71, 71);
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    color: white; /* Set the font color to white */
 }
+.input-group mb-3{
 
+    width: 100px;
 
+}
