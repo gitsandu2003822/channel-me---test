@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        .left-aligned {
+            text-align: left;
+            margin-left: 0;
+        }
+        .doctor-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .btn-purple {
+            background-color: purple; 
+            color: white;
+        }
+        .btn-purple:hover {
+            background-color: #9257d6;
+        }
+        .image-preview-container {
+            margin-top: 15px;
+        }
+        .image-preview {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            max-width: 150px;
+            position: relative;
+        }
+        .image-preview img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .remove-image-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .left-aligned {
+                text-align: center;
+            }
+            .button-container {
+                flex-direction: column; /* Stack buttons vertically on small screens */
+                align-items: center;
+                margin-bottom: 15px;
+            }
+            .button-container button {
+                width: 100%; /* Make buttons full-width on small screens */
+                margin-bottom: 5px; /* Reduced gap between buttons */
+            }
+            .col-md-4 {
+                flex: 0 0 100%; /* Make doctor cards full-width on small screens */
+            }
+            .image-preview {
+                max-width: 100%; /* Allow image preview to scale */
+            }
+            .image-preview-container {
+                margin-left: 0; /* Center image preview */
+                display: flex;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="p-3">
+    <div class="container">
+        <h2 class="fw-bold left-aligned">Staff Dashboard</h2>
+        
+        <div class="button-container mb-3 d-flex justify-content-between">
+            <button class="btn btn-success" onclick="window.location.href='staff.html'">View Inquiries</button>
+            <button class="btn btn-purple">Add and Remove Doctors</button>
+            <button class="btn btn-warning">View Appointments</button>
+        </div>
+        
+        <div class="d-flex justify-content-end align-items-start mb-3">
+            <button class="btn btn-primary me-2">Update Login</button>
+            <button class="btn btn-danger">Logout</button>
+        </div>
+        
+    </div>
+    
+    <div class="container mt-4">
+        <h4 class="mb-3">Add a Doctor</h4>
+        
+        <form id="addDoctorForm" class="row g-3">
+            <div class="col-md-4">
+                <label for="doctorId" class="form-label">Doctor ID</label>
+                <input type="text" class="form-control" id="doctorId" required>
+            </div>
+            <div class="col-md-4">
+                <label for="doctorName" class="form-label">Doctor Name</label>
+                <input type="text" class="form-control" id="doctorName" required>
+            </div>
+            <div class="col-md-4">
+                <label for="specialization" class="form-label">Specialization</label>
+                <input type="text" class="form-control" id="specialization" required>
+            </div>
+            <div class="col-md-4">
+                <label for="doctorImage" class="form-label">Doctor Image</label>
+                <input type="file" class="form-control" id="doctorImage" accept="image/*" required>
+            </div>
+            <div id="selectedImageContainer" class="image-preview-container"></div>
+        </div>
+        <div class="col-12 d-flex justify-content-start align-items-center mt-4" style="margin-left: 90px;">
+            <button type="submit" class="btn btn-primary me-3">Add Doctor</button>
+            <button type="submit" class="btn btn-danger">Remove Doctor</button>
+        </div>
+        
+        </form>
+
+        <div class="container mt-4">
+            <h4 class="mb-3">Doctors List</h4>
+            <div class="row" id="doctorList">
+                <p class="text-muted">No doctors added yet</p>
+            </div>
+        </div>
+    
+        <script>
+            document.getElementById('doctorImage').addEventListener('change', function(event) {
+                let file = event.target.files[0];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('selectedImageContainer').innerHTML = `
+                            <div class="image-preview">
+                                <img src="${e.target.result}" alt="Selected Image">
+                                <button class="remove-image-btn" onclick="removeSelectedImage()">×</button>
+                            </div>`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            function removeSelectedImage() {
+                document.getElementById('selectedImageContainer').innerHTML = ''; // Clear the selected image
+                document.getElementById('doctorImage').value = ''; // Reset the file input
+            }
+
+            document.getElementById('addDoctorForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                let doctorId = document.getElementById('doctorId').value;
+                let doctorName = document.getElementById('doctorName').value;
+                let specialization = document.getElementById('specialization').value;
+                let doctorImage = document.getElementById('doctorImage').files[0];
+                
+                if (doctorId && doctorName && specialization && doctorImage) {
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        let doctorCard = `
+                            <div class="col-md-4 mb-3">
+                                <div class="card text-center doctor-card">
+                                    <img src="${e.target.result}" class="mx-auto mt-3" alt="Doctor Image">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${doctorName}</h5>
+                                        <p class="card-text">${specialization}</p>
+                                        <button class="btn btn-danger btn-sm" onclick="removeDoctor(this)">Remove</button>
+                                    </div>
+                                </div>
+                            </div>`;
+                        document.getElementById('doctorList').insertAdjacentHTML('beforeend', doctorCard);
+                    };
+                    reader.readAsDataURL(doctorImage);
+                    
+                    // Reset image preview after adding
+                    removeSelectedImage();
+                }
+            });
+
+            function removeDoctor(button) {
+                button.closest('.col-md-4').remove();
+            }
+        </script>
+        
+        <footer class="text-center mt-4 text-muted">
+            <p>&copy; 2025 Channel Your Doctor. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
