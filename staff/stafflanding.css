@@ -135,19 +135,8 @@ header {
     }
 }
 #appointments-section {
-    margin-top: 40px;
+    margin-top: 10px;
     padding: 20px;
-}
-#appointments-section h2{
-    
-    background-color: #0a0340; /* Blue background */
-    padding: 20px 0;
-    color: white; /* Keep text white */
-    text-align: center;
-    border-radius: 10px;
-    margin-bottom: 80px;
-    width: 270px;
-    margin-left: 525px;
 }
 
 
