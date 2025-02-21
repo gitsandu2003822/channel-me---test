@@ -6,7 +6,10 @@
     <title>Channel Your Doctor</title>
     <link rel="stylesheet" href="clientStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-   
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    
 </head>
 <body>
 
@@ -104,28 +107,23 @@
         <input type="text" placeholder="Enter your ID" required>
         <input type="text" placeholder="Enter your name" required>
         <input type="tel" placeholder="Enter subject" required>
-    
-        <!-- New Date Input Field -->
         <input type="date" placeholder="Select a date" required>
-    
-        <!-- New Image Upload Input Field -->
         <input type="file" accept="image/*" id="image-input" required>
-    
-        <div class="image-preview" id="image-preview" style="display: none;">
-            <button id="remove-image" class="close-btn">&times;</button>
-            <img id="preview-image" src="" alt="Image Preview">
+        <div class="image-preview-container">
+            <div class="image-preview" id="image-preview" style="display: none;">
+                <img id="preview-image" src="" alt="Image Preview">
+            </div>
+            <span id="remove-image" class="close-btn" style="display: none;">&times;</span> <!-- Initially hidden -->
         </div>
-
         <textarea placeholder="Enter your message" required></textarea>
         <button type="submit">Send Message</button>
-        
+    
         <!-- Container to display selected image -->
        
     </div>
     
     <!-- Link to External JavaScript File -->
     <script src="client.js"></script>
-    
     
  
     <footer>
