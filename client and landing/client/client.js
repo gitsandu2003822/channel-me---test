@@ -1,30 +1,73 @@
-document.getElementById('image-input').addEventListener('change', function (event) {
-    const file = event.target.files[0];
-    const imagePreview = document.getElementById('image-preview');
-    const previewImage = document.getElementById('preview-image');
-    const removeImageButton = document.getElementById('remove-image');
+let selectedFiles = []; // Store selected images
 
-    if (file) {
-        const reader = new FileReader();
+document.getElementById('image-input').addEventListener('change', function(event) {
+    const container = document.querySelector('.image-preview-container');
+    const files = Array.from(event.target.files);
 
-        reader.onload = function (e) {
-            previewImage.src = e.target.result;
-            imagePreview.style.display = 'flex'; // Show the image preview
-            removeImageButton.style.display = 'block'; // Show the close button
-        };
+    // Combine previously selected and newly uploaded files
+    selectedFiles = [...selectedFiles, ...files];
 
-        reader.readAsDataURL(file);
+    // Ensure only up to 4 images are stored
+    if (selectedFiles.length > 4) {
+        alert('You can only upload up to 4 images.');
+        selectedFiles = selectedFiles.slice(0, 4); // Keep only the first 4 images
     }
+
+    container.innerHTML = ''; // Clear previous preview before displaying updated list
+
+    selectedFiles.forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imgDiv = document.createElement('div');
+            imgDiv.className = 'image-preview';
+
+            const img = document.createElement('img');
+            img.src = e.target.result;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove-image-btn';
+            removeBtn.innerHTML = '×';
+            removeBtn.onclick = function() {
+                selectedFiles.splice(index, 1); // Remove the image from the array
+                updateImagePreview(); // Refresh preview
+            };
+
+            imgDiv.appendChild(img);
+            imgDiv.appendChild(removeBtn);
+            container.appendChild(imgDiv);
+        };
+        reader.readAsDataURL(file);
+    });
+
+    event.target.value = ''; // Reset file input so same image can be selected again if needed
 });
 
-// Remove the image and hide the preview and close button
-document.getElementById('remove-image').addEventListener('click', function () {
-    const imagePreview = document.getElementById('image-preview');
-    const previewImage = document.getElementById('preview-image');
-    const removeImageButton = document.getElementById('remove-image');
+// Function to update the image preview when an image is removed
+function updateImagePreview() {
+    const container = document.querySelector('.image-preview-container');
+    container.innerHTML = '';
 
-    previewImage.src = '';
-    imagePreview.style.display = 'none'; // Hide the image preview
-    removeImageButton.style.display = 'none'; // Hide the close button
-    document.getElementById('image-input').value = ''; // Clear the input
-});
+    selectedFiles.forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imgDiv = document.createElement('div');
+            imgDiv.className = 'image-preview';
+
+            const img = document.createElement('img');
+            img.src = e.target.result;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove-image-btn';
+            removeBtn.innerHTML = '×';
+            removeBtn.onclick = function() {
+                selectedFiles.splice(index, 1);
+                updateImagePreview();
+            };
+
+            imgDiv.appendChild(img);
+            imgDiv.appendChild(removeBtn);
+            container.appendChild(imgDiv);
+        };
+        reader.readAsDataURL(file);
+    });
+}

@@ -305,28 +305,43 @@ nav ul li a:hover {
 }
 
 .image-preview-container {
-    position: relative; /* Positioning context for the close button */
-    margin-top: 10px; /* Space above the preview box */
-    display: inline-block; /* Align close button with the preview box */
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .image-preview {
-    width: 150px; /* Set a fixed width for the preview box */
-    height: 150px; /* Set a fixed height for the preview box */
-    border: 1px solid #007BFF; /* Blue border for the preview box */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Hide overflow */
-    display: flex; /* Flexbox for image alignment */
-    align-items: center; /* Center image vertically */
-    justify-content: center; /* Center image horizontally */
-    background-color: #f4f7fa; /* Light background color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: relative;
+    width: 100px;
+    height: 100px;
 }
 
 .image-preview img {
-    width: 100%; /* Ensure the image fills the width */
-    height: 100%; /* Ensure the image fills the height */
-    object-fit: contain; /* Ensure the image fits within the box without distortion */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .close-btn {
