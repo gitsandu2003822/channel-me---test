@@ -2,10 +2,10 @@ document.getElementById('doctorImages').addEventListener('change', function(even
     const container = document.getElementById('selectedImageContainer');
     const files = event.target.files;
 
-    // Limit the number of files to 4
+    
     if (files.length + container.childElementCount > 1) {
         alert('You can only upload one image at once.');
-        event.target.value = ''; // Reset file input
+        event.target.value = ''; 
         return;
     }
 

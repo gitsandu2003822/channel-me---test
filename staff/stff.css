@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     background-color: #f8f9fa;
     font-family: 'Arial', sans-serif;
@@ -26,14 +26,14 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-/* Button Container Below Table */
+
 .button-container {
     display: flex;
-    justify-content: center; /* Centers buttons horizontally */
-    flex-wrap: wrap; /* Ensures responsiveness on smaller screens */
-    gap: 15px; /* Adds spacing between buttons */
-   margin-left: 20px; /* Space between table and buttons */
-    padding: 10px 0; /* Adds some vertical padding */
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+   margin-left: 20px; 
+    padding: 10px 0; 
 }
 
 .table {
@@ -55,7 +55,7 @@ body {
     border: none;
 }
 
-/* Custom Button Styles */
+
 .btn-purple {
     background-color: #6f42c1;
     color: white;
@@ -70,12 +70,12 @@ body {
     background-color: #ffc107;
 }
 
-/* Input Group Styling */
+
 .date-filter {
     max-width: 350px;
 }
 
-/* Table Styling */
+
 .table th {
     background-color: #007bff;
     color: white;
@@ -84,7 +84,7 @@ body {
     background-color: #f1f1f1;
 }
 
-/* Footer */
+
 footer {
     padding: 10px 0;
     background-color: #ffffff;

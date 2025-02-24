@@ -1,11 +1,11 @@
-/* Global Reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styling */
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f4f7fa;
@@ -15,15 +15,15 @@ body {
 }
 
 header {
-    background-color: #007BFF; /* Blue background */
+    background-color: #007BFF; 
     padding: 20px 0;
-    color: white; /* Keep text white */
+    color: white; 
     text-align: center;
     border-radius: 10px;
     margin: 0;
 }
 
-/* Navigation Bar */
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -119,7 +119,7 @@ nav ul li a:hover {
     background-color: #3498db;
 }
 
-/* Search Container */
+
 .Dsearch-container {
     background-image: url('/client/images/hospital.png');
     background-size: cover;
@@ -145,7 +145,7 @@ nav ul li a:hover {
     font-size: 16px;
 }
 
-/* Form Inputs */
+
 .search-form {
     background: rgba(255, 255, 255, 0.8);
     padding: 20px;
@@ -172,7 +172,7 @@ nav ul li a:hover {
     font-size: 14px;
 }
 
-/* Search Button */
+
 .search-form button {
     background-color: #007BFF;
     color: white;
@@ -189,7 +189,7 @@ nav ul li a:hover {
     background-color: #0056b3;
 }
 
-/* Doctor List */
+
 .doctor-list {
     margin-top: 190px;
     text-align: center;
@@ -200,9 +200,9 @@ nav ul li a:hover {
 }
 
 .doctor-list h4 {
-    font-size: 42px; /* Increase the font size */
-    font-weight: bold; /* Make it bold */
-    color: #007BFF; /* Keep the blue color */
+    font-size: 42px;
+    font-weight: bold; 
+    color: #007BFF; 
     font-family: 'Poppins', sans-serif;
     margin-top: -150px;
     margin-right: -1200px;
@@ -259,7 +259,7 @@ nav ul li a:hover {
     background-color: #0056b3;
 }
 
-/* Inquiry Box */
+
 .inquiry-box {
     margin-top: 50px;
     background-color: #ffffff;
@@ -288,25 +288,25 @@ nav ul li a:hover {
 }
 
 .inquiry-box button {
-    background-color: transparent; /* Remove the green background */
-    color: #007BFF; /* Set the text color to blue (or any color you prefer) */
-    border: 1px solid #007BFF; /* Add a blue border */
-    padding: 14px; /* Maintain padding */
+    background-color: transparent; 
+    color: #007BFF;
+    border: 1px solid #007BFF; 
+    padding: 14px; 
     font-size: 16px;
     font-weight: bold;
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transitions for effects */
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 .inquiry-box button:hover {
-    background-color: #e7f1ff; /* Light blue background on hover for visibility */
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    background-color: #e7f1ff; 
+    transform: scale(1.05); 
 }
 
 .image-preview-container {
     display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping */
+    flex-wrap: nowrap; 
     gap: 10px;
     margin-top: 10px;
 }
@@ -345,29 +345,29 @@ nav ul li a:hover {
 }
 
 .close-btn {
-    position: absolute; /* Position it absolutely relative to the container */
-    top: -10px; /* Space from the top */
-    right: -25px; /* Space from the right, adjust this to fit closer to the box */
-    border: none; /* No border */
-    background: none; /* No background */
-    font-size: 24px; /* Size for the close icon */
-    cursor: pointer; /* Pointer cursor on hover */
-    color: #ff0000; /* Red color for the close button */
-    padding: 0; /* No padding */
-    transition: color 0.3s; /* Smooth color transition on hover */
-    width: 24px; /* Fixed width */
-    height: 24px; /* Fixed height */
-    line-height: 24px; /* Center the cross vertically */
-    text-align: center; /* Center the cross horizontally */
-    display: none; /* Hide by default */
+    position: absolute; 
+    top: -10px; 
+    right: -25px; 
+    border: none; 
+    background: none; 
+    font-size: 24px; 
+    cursor: pointer; 
+    color: #ff0000; 
+    padding: 0; 
+    transition: color 0.3s;
+    width: 24px; 
+    height: 24px; 
+    line-height: 24px; 
+    text-align: center; 
+    display: none; 
 }
 
 .close-btn:hover {
-    color: #c00; /* Darker red on hover for visibility */
+    color: #c00; 
 }
 
 
-/* Footer */
+
 footer {
     text-align: center;
     margin-top: 50px;
@@ -375,7 +375,7 @@ footer {
     padding: 20px;
 }
 
-/* Responsive Adjustments */
+
 @media (max-width: 768px) {
     .doctor-list {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
