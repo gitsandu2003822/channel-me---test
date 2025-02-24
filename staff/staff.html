@@ -7,54 +7,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="stff.css">
-    <style>
-        .left-aligned {
-            text-align: left;
-            margin-left: 0;
-        }
-        .btn-purple {
-            background-color: purple; 
-            color: white;
-        }
-        .btn-purple:hover {
-            background-color: #d8b6ff;
-        }
-        .btn-success:hover {
-            background-color: #a3e4a3;
-        }
-        .btn-warning:hover {
-            background-color: #ffe699;
-        }
-    </style>
 </head>
-<body class="p-3">
-    
-    <div class="container">
-        <h2 class="fw-bold left-aligned">Staff Dashboard</h2>
-        
-        <div class="button-container mb-3">
-            <button class="btn btn-success">View Inquiries</button>
-            <button class="btn btn-purple" onclick="window.location.href='AddRemoveDoctor.html'">Add and Remove Doctors</button>
-            <button class="btn btn-warning"onclick="window.location.href='viewAppointments.html'">View Appointments</button>
+<body>
+    <nav class="navbar navbar-expand-lg shadow-sm p-3">
+        <div class="container d-flex align-items-center">
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand fw-bold" href="#">Staff Dashboard</a>
+                <h1 style="font-size: 40px; margin-left: 0;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-weight: 300;">Staff Dashboard</h1> <!-- Use margin-left: 0 -->
+            </div>
+            <div class="ms-auto d-flex align-items-center">
+                <button class="btn btn-primary me-2">Login</button>
+                <button class="btn btn-danger me-3">Logout</button>
+                <img src="/staff/images/staff.avif" alt="Doctor Profile" class="profile-img">
+            </div>
         </div>
-        <div class="d-flex justify-content-end flex-wrap">
-            <button class="btn btn-primary me-2">Update Login</button>
-            <button class="btn btn-danger">Logout</button>
-        </div>
+    </nav>
+
+    <div class="d-flex gap-3 flex-wrap mb-4 button-container justify-content-start">
+        <button class="btn btn-success"><i class="bi bi-envelope"></i> View Inquiries</button>
+        <button class="btn btn-purple" onclick="window.location.href='AddRemoveDoctor.html'">
+            <i class="bi bi-person-plus"></i> Add/Remove Doctors
+        </button>
+        <button class="btn btn-warning" onclick="window.location.href='viewAppointments.html'">
+            <i class="bi bi-calendar-check"></i> View Appointments
+        </button>
     </div>
     
-        
-    <div class="d-flex justify-content-start">
-        <div class="input-group mb-3" style="max-width: 300px;">
-            <span class="input-group-text bg-primary text-white">
-                <i class="bi bi-calendar-event"></i>
-            </span>
-            <input type="date" class="form-control">
-            <button class="btn btn-primary" type="button">
-                <i class="bi bi-search"></i> Search
-            </button>
+
+
+        <div class="d-flex mb-3">
+            <div class="input-group date-filter">
+                <span class="input-group-text bg-primary text-white">
+                    <i class="bi bi-calendar-event"></i>
+                </span>
+                <input type="date" class="form-control">
+                <button class="btn btn-primary" type="button">
+                    <i class="bi bi-search"></i> Search
+                </button>
+            </div>
         </div>
-    </div>
+
         <div class="table-responsive">
             <table class="table table-bordered text-center">
                 <thead class="table-primary">
@@ -73,14 +65,12 @@
                 </tbody>
             </table>
         </div>
-        
-       
     </div>
-
-    <script src="staff.js"></script>
 
     <footer class="text-center mt-4 text-muted">
         <p>&copy; 2025 Channel Your Doctor. All rights reserved.</p>
     </footer>
+
+    <script src="staff.js"></script>
 </body>
 </html>
