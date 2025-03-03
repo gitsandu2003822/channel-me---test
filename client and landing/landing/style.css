@@ -574,12 +574,11 @@ body {
     margin-bottom: 30px;
 }
 
-/* Contact Section Styles */
-/* Contact Section Styles */
+
 .contact-section {
     padding: 60px 20px;
     background-color: #ffffff;
-    text-align: left; /* Keep the text alignment for other elements */
+    text-align: left;
 }
 
 .contact-section h2 {
@@ -587,44 +586,44 @@ body {
     font-weight: 700;
     color: #333;
     font-size: 2.5rem;
-    text-align: right; /* Align title to the right */
+    text-align: right;
     margin-bottom: 40px;
-    margin-right: 0; /* Adjust this value as needed */
+    margin-right: 0; 
     margin-top: 170px;
 }
 
 .contact-details {
     display: flex; 
-    flex-direction: column; /* Stack boxes vertically */
-    align-items: center; /* Center items horizontally */
-    gap: 10px; /* Reduce space between boxes */
-    margin-bottom: 20px; /* Adjust as needed */
+    flex-direction: column; 
+    align-items: center;
+    gap: 10px; 
+    margin-bottom: 20px; 
 }
 
 
 .contact-box {
     background-color: #007BFF;
     color: white;
-    padding: 5px 10px; /* Reduced padding to decrease height */
+    padding: 5px 10px; 
     border-radius: 8px;
     text-align: center;
-    width: 200px; /* Adjusted width */
+    width: 200px; 
     font-size: 14px;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90px; /* Set a fixed height */
+    height: 90px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     animation: zoomEffect 2s infinite alternate;
-    margin-top: 320px; /* Margin below each contact box */
+    margin-top: 320px;
     margin-right: -400px;
     margin: 27px;
 }
 
 .contact-box i {
     margin-right: 5px;
-    font-size: 16px; /* Slightly smaller icon */
+    font-size: 16px; 
     gap: 10px;
 }
 
@@ -641,7 +640,7 @@ body {
     display: flex;
     gap: 20px;
     margin-top: 500px;
-    margin-left: auto; /* Align social icons to the right */
+    margin-left: auto; 
     margin: 10px;
 }
 
@@ -662,27 +661,27 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 800px; /* Set the maximum width for the map */
-    margin-top: 10px; /* Add gap between contact boxes and map */
-    margin-left: auto; /* Center the map horizontally */
-    margin-right: auto; /* Center the map horizontally */
+    max-width: 800px; 
+    margin-top: 10px;
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
 .map-embed {
-    width: 100%; /* Ensure the container is full width */
+    width: 100%; 
 }
 
 .map-embed iframe {
     border-radius: 8px;
     border: none;
-    width: 100%; /* Set iframe to full width */
-    height: 400px; /* Set height as needed */
+    width: 100%; 
+    height: 400px; 
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .contact-details {
-        flex-direction: column; /* Stack contact boxes on smaller screens */
+        flex-direction: column; 
     }
 
     .contact-info,
@@ -692,14 +691,14 @@ body {
     }
 
     .social-icons {
-        justify-content: center; /* Center social icons on smaller screens */
+        justify-content: center;
     }
 }
 
 
-/* Footer Styles */
+
 .footer {
-    margin-top: 40px; /* Space above footer */
+    margin-top: 40px; 
 }
 
 
