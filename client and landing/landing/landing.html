@@ -134,85 +134,103 @@
    
 
     <section class="lab-services" id="lab-services">
-
         <div class="card">
-
             <img src="Elements/images/lab.jpg" alt="Lab Image" class="card-img">
 
-
+    
             <div class="lab-service">
-
-                <h1><b>Laboratory Services</b></h1>
-
-
-                <p>Muthuneth Medical Channel Center provides an extensive range of laboratory services
+                <h1 id="heading" class="heading-animation"><b>Laboratory Services</b></h1>
+    
+                <p id="lab-paragraph" class="short-desc content-animation">
+                    Muthuneth Medical Channel Center provides an extensive range of laboratory services
                     designed to support accurate diagnostics and efficient health monitoring. Our laboratory
                     is equipped with advanced technology to perform various tests, including blood work,
                     microbiology, hematology, and biochemistry. Whether for routine health check-ups or specialized
                     diagnostic tests, our team ensures fast and precise results to guide timely medical decisions. We
                     also offer specialized testing for genetic disorders, allergies, and cancer markers. At Muthuneth
                     Medical Channel Center, we are committed to patient care, ensuring confidentiality and ease of access
-                    with online result reporting. Trust us for reliable, high-quality laboratory services.</p>
+                    with online result reporting. Trust us for reliable, high-quality laboratory services.
+                </p>
+    
+                <a href="javascript:void(0)" class="learn-more-btn" onclick="toggleDescription('dental')">Learn More</a>
             </div>
-
         </div>
-
     </section>
     
-    <section class="Health-services" id="Health-services">
-
-        <div class="healthcard">
-
-            <img src="Elements/images/check.jpg" alt="Health Image" class="healthcard-img">
-
-
-            <div class="health-service">
-
-                <h1><b>Health Services</b></h1>
-
-
-                <p>Muthuneth Channel Center offers a wide array of valuable medical health services aimed at ensuring the well-being
-                    of our community. With a commitment to providing high-quality care, we offer specialized services in general health
-                    check-ups, preventive care, and advanced diagnostics. Our skilled team of doctors and healthcare professionals is
-                    dedicated to treating patients with personalized attention and expertise. We provide services ranging from 
-                    routine physical exams and vaccination programs to more specialized services, such as cardiology, pediatrics,
-                    gynecology, and orthopedics. Additionally, our state-of-the-art medical laboratory facilitates fast and accurate
-                    diagnostic testing, allowing for timely intervention. At Muthuneth Channel Center, we also prioritize patient 
-                    education, helping individuals make informed decisions about their health through counseling and wellness programs.
-                    With a focus on comprehensive care, advanced technology, and compassionate service, Muthuneth Channel Center stands 
-                    as a trusted partner in your healthcare journey.</p>
+    
+    
+   <!-- Add this at the end of your HTML before closing </body> -->
+<section class="Health-services" id="Health-services">
+    <div class="healthcard">
+        <!-- Content Section -->
+        <div class="health-service">
+            <h1><b>Health Services</b></h1>
+            <p class="health-description">
+                Muthuneth Channel Center offers a wide array of valuable medical health services aimed at ensuring
+                the well-being of our community. With a commitment to providing high-quality care, our services include:
+            </p>
+            <ul class="service-list">
+                <li><i class="ri-checkbox-circle-line"></i> Comprehensive medical consultations</li>
+                <li><i class="ri-checkbox-circle-line"></i> Preventive health screenings</li>
+                <li><i class="ri-checkbox-circle-line"></i> Specialist referrals</li>
+                <li><i class="ri-checkbox-circle-line"></i> Chronic disease management</li>
+                <li><i class="ri-checkbox-circle-line"></i> Emergency medical services</li>
+            </ul>
+            <div class="health-stats">
+                <div class="stat-item">
+                    <h3>15,000+</h3>
+                    <p>Patients Served</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Medical Professionals</p>
+                </div>
             </div>
-
         </div>
 
+        <!-- Image Slider Section -->
+        <div class="health-image-container">
+            <div class="image-slider">
+                <img src="/client and landing/landing/Elements/images/m1.jpg" class="slider-img active" alt="Health Service 1">
+                <img src="/client and landing/landing/Elements/images/m2.jpg" class="slider-img" alt="Health Service 2">
+                <img src="/client and landing/landing/Elements/images/m5.jpg" class="slider-img" alt="Health Service 3">
+                <img src="/client and landing/landing/Elements/images/m4.jpg" class="slider-img" alt="Health Service 4">
+            </div>
+           
+        </div>
+        <div class="experience-badge">
+            <h3>5+ Years</h3>
+            <p>Medical Experience</p>
+        </div>
+    </div>
+</section>
 
-    </section>
+<script>
+// Add this script after the HTML
+let currentSlide = 0;
+const slides = document.querySelectorAll('#Health-services .slider-img');
 
+function cycleSlides() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+
+setInterval(cycleSlides, 3000);
+</script>
+    
     <section class="Dental-services" id="Dental-services">
-
         <div class="dentalcard">
-
             <img src="Elements/images/dental.jpg" alt="Dental Image" class="dentalcard-img">
-
-
             <div class="dental-service">
-
                 <h1><b>Dental Services</b></h1>
-
-
-                <p> Muthuneth Channel Center offers comprehensive dental services to ensure the highest standard of oral care
-                    for our patients. Our experienced dental professionals provide a wide range of services, from routine check-ups
-                    and cleanings to advanced treatments such as fillings, root canals, and teeth whitening. We prioritize patient
-                    comfort and ensure a pain-free experience during all procedures. Our state-of-the-art dental technology, 
-                    coupled with our commitment to the latest industry practices, allows us to offer exceptional care. Whether
-                    you need preventive dental care, cosmetic dentistry, or specialized treatments like orthodontics, Muthuneth
-                    Channel Center is dedicated to improving your smile and oral health. We focus on both the aesthetics and 
-                    functionality of your teeth, delivering results that enhance your confidence and overall well-being.</p>
+                <p class="short-description">Muthuneth Channel Center offers comprehensive dental services to ensure the highest standard of oral care for our patients. Our experienced dental professionals provide a wide range of services...</p>
+                <p class="full-description" style="display: none;">From routine check-ups and cleanings to advanced treatments such as fillings, root canals, and teeth whitening. We prioritize patient comfort and ensure a pain-free experience during all procedures. Our state-of-the-art dental technology, coupled with our commitment to the latest industry practices, allows us to offer exceptional care. Whether you need preventive dental care, cosmetic dentistry, or specialized treatments like orthodontics, Muthuneth Channel Center is dedicated to improving your smile and oral health. We focus on both the aesthetics and functionality of your teeth, delivering results that enhance your confidence and overall well-being.</p>
+                <a href="javascript:void(0)" class="learn-more-btn" onclick="toggleDescription('dental')">Learn More</a>
             </div>
-
         </div>
-
     </section>
+    
 
     <div class="contact-section" id="contact-section">
         <h2>Contact Us</h2>

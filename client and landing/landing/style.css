@@ -489,6 +489,105 @@ body {
     height: auto;
     margin-right: 20px;
 }
+.short-desc {
+    height: 4.5em; /* Adjust this value to show only three lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em; /* Set line height to control the height of the lines */
+    display: block;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+/* Animation for the heading */
+/* Animation for the heading */
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animation for the paragraph and button */
+@keyframes slideInContentFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Set up initial state for the heading */
+.heading-animation {
+    animation: slideInFromRight 1s ease-out forwards;
+}
+
+/* Set up animation for the paragraph and button together */
+.content-animation {
+    opacity: 0;
+    animation: slideInContentFromRight 1s ease-out forwards;
+    animation-delay: 1s; /* Wait for heading to finish */
+}
+
+/* Both the paragraph and button will have the same animation delay */
+#lab-paragraph, #learn-more {
+    animation-delay: 1.5s; /* Wait for heading animation and then both paragraph & button animate together */
+}
+
+/* Styling for the "Learn More" button */
+button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #08043f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Animation for the lab image */
+@keyframes imageScaleIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Apply animation to the lab image */
+.card-img {
+    animation: imageScaleIn 1.5s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.5s; /* Slight delay to let other elements animate first */
+}
+
+/* Optional: Hover effect to enhance interaction */
+.card-img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    transition: transform 0.3s ease;
+}
+
 
 .lab-service {
     max-width: 600px;
@@ -505,41 +604,193 @@ body {
     line-height: 1.6;
     margin-bottom: 30px;
 }
+.learn-more-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0a0430;  /* Green color */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
+.learn-more-btn:hover {
+    background-color: #06033e; /* Darker green on hover */
+}
+
+.image-slider {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Adjust based on your desired image size */
+    overflow: hidden;
+}
+
+
+
+/* Optional: Style for the rest of the content */
+.health-service {
+    margin-top: 20px;
+}
+/* New CSS only for this section */
+#Health-services .image-slider {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    max-width: 3000px;
+}
+
+
+#Health-services .slider-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+#Health-services .slider-img.active {
+    opacity: 1;
+}
+
+#Health-services .experience-badge {
+    margin-top: 20px;
+    background: #2563eb;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
 .Health-services {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    margin-top: 30px;
+    padding: 4rem 2rem;
+    background: #f8faff;
 }
 
 .healthcard {
     display: flex;
     align-items: center;
-}
-
-.healthcard-img {
-    width: 750px;
-    height: auto;
-    margin-right: 20px;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .health-service {
-    max-width: 600px;
-}
-
-.health-service p {
-    font-size: 19px;
-    line-height: 1.6;
+    flex: 1;
 }
 
 .health-service h1 {
-    font-size: 35px;
-    line-height: 1.6;
-    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #1a237e;
+    margin-bottom: 1.5rem;
 }
 
+.health-description {
+    font-size: 1.1rem;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.service-list {
+    list-style: none;
+    margin-bottom: 2.5rem;
+}
+
+.service-list li {
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #2d3748;
+}
+
+.service-list i {
+    color: #2563eb;
+    font-size: 1.4rem;
+}
+
+.health-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item h3 {
+    font-size: 2rem;
+    color: #1a237e;
+    margin-bottom: 0.5rem;
+}
+
+/* Add this after existing styles */
+.health-image-container {
+    max-width: 1000px !important; /* Increased from 800px */
+    width: 100%;
+    margin: 0 auto; /* Center the container */
+    position: relative;
+}
+
+/* Optional: Add responsive adjustment */
+@media (max-width: 1200px) {
+    .health-image-container {
+        max-width: 800px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .health-image-container {
+        max-width: 90% !important;
+    }
+}
+
+.experience-badge {
+    background: #2563eb;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 200px;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: static;
+    transform: none;
+}
+
+.health-main-image {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 768px) {
+    .healthcard {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .health-image-container {
+        width: 100%;
+    }
+    
+    .experience-badge {
+        right: 0;
+        bottom: -1rem;
+    }
+}
 .Dental-services {
     display: flex;
     align-items: center;
