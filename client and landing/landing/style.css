@@ -599,6 +599,20 @@ button:hover {
     max-width: 600px;
   
 }
+#lab-paragraph {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Show only 2 lines */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis at the end of the visible text */
+    transition: all 0.3s ease-in-out;
+}
+
+#lab-paragraph.expanded {
+    -webkit-line-clamp: unset; /* Show full paragraph */
+    overflow: visible;
+}
+
 
 .lab-service p {
     font-size: 19px;

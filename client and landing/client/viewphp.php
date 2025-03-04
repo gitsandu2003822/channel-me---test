@@ -1,42 +1,47 @@
 <?php
-// Include your Connection class
+header('Content-Type: application/json');
+
+// Include the Connection class
 require_once 'Connection.php';
 
-// Instantiate the Connection class
-$host = 'localhost'; // Database host
-$username = 'root'; // Database username
-$password = ''; // Database password
-$database = 'channel_me_test'; // Your database name
+// Database connection details
+$host = 'localhost'; // Update with your DB host
+$username = 'root'; // Update with your DB username
+$password = ''; // Update with your DB password
+$database = 'channel_me_test'; // Update with your database name
 
-// Create a new database connection
-$connection = new Connection($host, $username, $password, $database);
+// Create a new connection instance
+$conn = new Connection($host, $username, $password, $database);
 
-// Get the PDO connection from your Connection class
-$conn = $connection->getConnection(); // This will return the MySQLi connection object
+// Get data from the request
+$data = json_decode(file_get_contents("php://input"));
+$specialization = $data->specialization;
+$date = $data->date; // Currently, we are not using the date in the query, but you can expand functionality
 
-// Get JSON input data from the frontend
-$data = json_decode(file_get_contents('php://input'), true);
-$specialization = $data['specialization'];
-$date = $data['date'];  // Currently unused in query, but you can use it for additional filtering
+// Prepare the query based on the specialization (you can add more filters if needed)
+$query = "SELECT doctor_id, doctor_name, specialization, images 
+FROM adddoctors 
+WHERE specialization LIKE '%Cardiology%'";
 
-// SQL query to fetch doctors based on specialization
-$query = "SELECT * FROM adddoctors WHERE specialization LIKE ?";
-$stmt = $connection->runquery($query); // Using your custom runquery method
 
-// Bind the specialization parameter to the prepared statement
-$specializationSearch = "%$specialization%";
-$stmt->bind_param("s", $specializationSearch);
-
-// Execute the query
-$stmt->execute();
-$result = $stmt->get_result();
-
-// Fetch all the doctors from the result
-$doctors = [];
-while ($row = $result->fetch_assoc()) {
-    $doctors[] = $row;
+if ($specialization) {
+    $query .= " AND specialization LIKE '%$specialization%'";
 }
 
-// Return the result as a JSON response to the frontend
+// Execute the query
+$result = $conn->getConnection()->query($query);
+
+// Check if the query returned any results
+$doctors = [];
+while ($row = $result->fetch_assoc()) {
+    $doctors[] = [
+        'doctor_id' => $row['doctor_id'],
+        'doctor_name' => $row['doctor_name'],
+        'specialization' => $row['specialization'],
+        'image_url' => $row['images'], // Assuming the image is stored as a URL
+    ];
+}
+
+// Return the results as a JSON response
 echo json_encode($doctors);
 ?>

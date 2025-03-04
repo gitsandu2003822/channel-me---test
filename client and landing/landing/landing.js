@@ -11,13 +11,41 @@ function toggleDescription(serviceType) {
     var button = document.querySelector(`.${serviceType}-service .learn-more-btn`);
 
     if (fullDescription.style.display === "none") {
-        fullDescription.style.display = "block";  // Show the full description
-        button.textContent = "Show Less";         // Change button text to "Show Less"
+        fullDescription.style.display = "block";  
+        button.textContent = "Show Less";      
     } else {
-        fullDescription.style.display = "none";   // Hide the full description
-        button.textContent = "Learn More";        // Change button text back to "Learn More"
+        fullDescription.style.display = "none";   
+        button.textContent = "Learn More";        
     }
 }
+function toggleDescription() {
+    const paragraph = document.getElementById('lab-paragraph');
+    const learnMoreBtn = document.querySelector('.learn-more-btn');
+    
+  
+    paragraph.classList.toggle('expanded');
+
+   
+    if (paragraph.classList.contains('expanded')) {
+        learnMoreBtn.textContent = 'Show Less'; 
+    } else {
+        learnMoreBtn.textContent = 'Learn More'; 
+    }
+}
+const learnMoreBtn = document.getElementById('learn-more-btn');
+const labParagraph = document.getElementById('lab-paragraph');
+
+learnMoreBtn.addEventListener('click', () => {
+    labParagraph.classList.toggle('expanded');
+    // Change button text after toggling
+    if (labParagraph.classList.contains('expanded')) {
+        learnMoreBtn.textContent = "Read Less";
+    } else {
+        learnMoreBtn.textContent = "Learn More";
+    }
+});
+
+
 function toggleDescription(service) {
     var fullDescription = document.querySelector(`#${service}-services .full-description`);
     var shortDescription = document.querySelector(`#${service}-services .short-description`);
@@ -32,7 +60,6 @@ function toggleDescription(service) {
 }
 
 
-// Function to update the images and create the animation effect
 function changeImage() {
     // Reset all images' left position to move them off the screen
     images.forEach((img, index) => {

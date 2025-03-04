@@ -48,32 +48,37 @@
     <div class="Dsearch-container">
         <h2>Find Your Doctor</h2>
         <p class="search-description">Search for doctors based on specialization, hospital, or location.</p>
-
+    
         <div class="search-form">
-           
-
+            <!-- Specialization Selection -->
             <label for="specialization">Select Specialization</label>
             <select id="specialization">
-                <option>Any Specialization</option>
-                <option>General Practitioner</option>
-                <option>Cardiology</option>
-                <option>Dermatology</option>
-                <option>Neurology</option>
-                <option>Psychiatry</option>
-                <option>Pulmonologist</option>
-                <option>Dermatologist</option>
-                <option>Emergency Medicine</option>
+                <option value="">Any Specialization</option>
+                <option value="General Practitioner">General Practitioner</option>
+                <option value="Cardiology">Cardiology</option>
+                <option value="Dermatology">Dermatology</option>
+                <option value="Neurology">Neurology</option>
+                <option value="Psychiatry">Psychiatry</option>
+                <option value="Pulmonologist">Pulmonologist</option>
+                <option value="Dermatologist">Dermatologist</option>
+                <option value="Emergency Medicine">Emergency Medicine</option>
             </select>
-
+    
+            <!-- Date Selection -->
             <label for="appointment-date">Select Date</label>
             <input id="appointment-date" type="date">
-
-            <button>🔍 Search</button>
+    
+            <!-- Search Button -->
+            <button onclick="searchDoctors()">🔍 Search</button>
         </div>
     </div>
+    
+    <!-- Div to display the search results below the search form -->
+    <div id="searchResults" class="search-results-container"></div>
+    
 
     
-    <section class="doctor-list">
+    <section class="doctor-list" id="doctorList">
         <h4>Doctors Available</h4>
 
         <div class="doctor-card">
