@@ -1,16 +1,9 @@
-function showFullText() {
-    const paragraph = document.getElementById("lab-paragraph");
-    const button = document.getElementById("learn-more");
-
-    if (paragraph.style.height === "auto") {
-        // Collapse to 3 lines
-        paragraph.style.height = "4.5em"; 
-        button.innerText = "Learn More";
-    } else {
-        // Show full text
-        paragraph.style.height = "auto"; 
-        button.innerText = "Show Less";
-    }
+function toggleDescription(targetId) {
+    const description = document.getElementById(`${targetId}-paragraph`);
+    const button = document.querySelector(`[onclick="toggleDescription('${targetId}')"]`);
+    
+    description.classList.toggle('expanded');
+    button.textContent = description.classList.contains('expanded') ? 'Show Less' : 'Learn More';
 }
 function toggleDescription(serviceType) {
     var shortDescription = document.querySelector(`.${serviceType}-service .short-description`);

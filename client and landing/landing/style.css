@@ -489,12 +489,18 @@ body {
     height: auto;
     margin-right: 20px;
 }
-.short-desc {
-    height: 4.5em; /* Adjust this value to show only three lines */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.5em; /* Set line height to control the height of the lines */
-    display: block;
+.short-desc.expanded {
+    height: auto !important;
+    overflow: visible !important;
+}
+
+.learn-more-btn {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    background-color: #0a0430 !important;
 }
 
 button {
@@ -738,35 +744,43 @@ button:hover {
 
 /* Add this after existing styles */
 .health-image-container {
-    max-width: 1000px !important; /* Increased from 800px */
+    max-width: 1000px !important;
     width: 100%;
-    margin: 0 auto; /* Center the container */
+    margin: 0 auto !important; /* Override any vertical margins */
     position: relative;
+    top: 0 !important; /* Force to top position */
+    margin-top: 0 !important; /* Remove existing top margin */
+    height: 700px; /* Adjust this value to set a fixed height */
+    min-height: 300px; /* Ensure it doesn't go below this height on smaller screens */
 }
 
-/* Optional: Add responsive adjustment */
+
+/* Responsive adjustments */
 @media (max-width: 1200px) {
     .health-image-container {
-        max-width: 800px !important;
+        max-width: 1000px !important;
+        margin-top: 0 !important;
+        height: 400px; /* Adjust height for smaller screens */
     }
 }
 
 @media (max-width: 992px) {
     .health-image-container {
-        max-width: 90% !important;
+        max-width: 100% !important;
+        margin-top: 0 !important;
+        height: 350px; /* Adjust height for even smaller screens */
     }
 }
 
-.experience-badge {
-    background: #2563eb;
-    color: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-top: 200px;
-    display: inline-block;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    position: static;
-    transform: none;
+#Health-services .experience-badge {
+    margin-top: 0 !important; /* Adjust this value as needed */
+   
+    display: block;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 100;
+    margin-bottom: 0;
 }
 
 .health-main-image {
@@ -791,6 +805,7 @@ button:hover {
         bottom: -1rem;
     }
 }
+
 .Dental-services {
     display: flex;
     align-items: center;
