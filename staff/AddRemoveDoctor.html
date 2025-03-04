@@ -85,32 +85,33 @@
 </div>
 
     
-    <div class="container mt-4">
-        <h4 class="mb-3">Add a Doctor</h4>
-        <form id="addDoctorForm" class="row g-3">
-            <div class="col-md-4">
-                <label for="doctorId" class="form-label">Doctor ID</label>
-                <input type="text" class="form-control" id="doctorId" required>
-            </div>
-            <div class="col-md-4">
-                <label for="doctorName" class="form-label">Doctor Name</label>
-                <input type="text" class="form-control" id="doctorName" required>
-            </div>
-            <div class="col-md-4">
-                <label for="specialization" class="form-label">Specialization</label>
-                <input type="text" class="form-control" id="specialization" required>
-            </div>
-            <div class="col-md-4">
-                <label for="doctorImages" class="form-label">Doctor Images (Max 4)</label>
-                <input type="file" class="form-control" id="doctorImages" accept="image/*" multiple required>
-            </div>
-            <div id="selectedImageContainer" class="image-preview-container"></div>
-            <div class="col-12 mt-5"> <!-- Adjusted margin here -->
-                <button type="submit" class="btn btn-primary me-3">Add Doctor</button>
-                <button type="button" class="btn btn-danger" id="removeDoctor">Remove Doctor</button>
-            </div>
-        </form>
-    </div>
+<div class="container mt-4">
+    <h4 class="mb-3">Add a Doctor</h4>
+    <form id="addDoctorForm" class="row g-3" method="post" action="addDoctors.php" enctype="multipart/form-data">
+        <div class="col-md-4">
+            <label for="doctorId" class="form-label">Doctor ID</label>
+            <input type="text" class="form-control" id="doctorId" name="doctorId" required>
+        </div>
+        <div class="col-md-4">
+            <label for="doctorName" class="form-label">Doctor Name</label>
+            <input type="text" class="form-control" id="doctorName" name="doctorName" required>
+        </div>
+        <div class="col-md-4">
+            <label for="specialization" class="form-label">Specialization</label>
+            <input type="text" class="form-control" id="specialization" name="specialization" required>
+        </div>
+        <div class="col-md-4">
+            <label for="doctorImages" class="form-label">Doctor Images (Max 4)</label>
+            <input type="file" class="form-control" id="doctorImages" name="doctorImages[]" accept="image/*" multiple required>
+        </div>
+        <div class="col-12 mt-5">
+            <button type="submit" class="btn btn-primary me-3">Add Doctor</button>
+            <button type="button" class="btn btn-danger" id="removeDoctor">Remove Doctor</button>
+        </div>
+    </form>
+</div>
+
+
 
     <script src="AddRemoveDoctor.js"></script>
 </body>
