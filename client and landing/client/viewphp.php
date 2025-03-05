@@ -1,23 +1,32 @@
 <?php
-include("connection.php"); 
+include '../connection.php'; // Ensure this file correctly initializes $conn
 
-header("Content-Type: application/json");
+// Initialize connection
+$connection = new Connection('localhost', 'root', '', 'channel_me_test');
+$conn = $connection->getConnection(); 
 
-$dbobject = new Connection("localhost", "root", "", "channel_me_test");
-$dbobject->getConnection();
-
-$sql = "SELECT * FROM adddoctors";
-$result = $dbobject->runquery($sql);
+// SQL query to fetch doctor details
+$sql = "SELECT doctor_id, doctor_name, specialization, images FROM adddoctors";
+$result = $conn->query($sql);
 
 $doctors = [];
 
-if ($result) {
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $doctors[] = $row;
-        }
+if ($result->num_rows > 0) {
+    // Fetch doctor data
+    while ($row = $result->fetch_assoc()) {
+        $doctor = [
+            'doctor_id' => $row['doctor_id'],
+            'doctor_name' => $row['doctor_name'],
+            'specialization' => $row['specialization'],
+            'images' => explode(",", $row['images']) // Convert the comma-separated string to an array of image paths
+        ];
+        $doctors[] = $doctor;
     }
+    // Return the data as JSON
+    echo json_encode($doctors);
+} else {
+    echo json_encode([]);
 }
 
-echo json_encode($doctors);
+$conn->close();
 ?>
