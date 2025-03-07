@@ -1,10 +1,8 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -15,14 +13,13 @@ body {
 }
 
 header {
-    background-color: #007BFF; 
+    background-color: #007BFF;
     padding: 20px 0;
-    color: white; 
+    color: white;
     text-align: center;
     border-radius: 10px;
     margin: 0;
 }
-
 
 nav {
     display: flex;
@@ -71,7 +68,6 @@ nav ul li a:hover {
     padding: 12px 18px;
     border: 2px solid #3498db;
 }
-
 .search-container {
     display: flex;
     align-items: center;
@@ -120,6 +116,8 @@ nav ul li a:hover {
 }
 
 
+
+
 .Dsearch-container {
     background-image: url('/client/images/hospital.png');
     background-size: cover;
@@ -144,7 +142,6 @@ nav ul li a:hover {
     margin-bottom: 20px;
     font-size: 16px;
 }
-
 
 .search-form {
     background: rgba(255, 255, 255, 0.8);
@@ -172,7 +169,6 @@ nav ul li a:hover {
     font-size: 14px;
 }
 
-
 .search-form button {
     background-color: #007BFF;
     color: white;
@@ -188,56 +184,107 @@ nav ul li a:hover {
 .search-form button:hover {
     background-color: #0056b3;
 }
+/* ===== Doctors Section Styling ===== */
+.displayDoctors {
+    padding: 2rem 5%;
+    background-color: #f9f9f9;
+}
 
+.displayDoctors h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+}
 
-#doctorList {
-    display: none; /* Hidden by default */
-    flex-wrap: wrap;
-    gap: 20px;
+#doctorsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .doctor-card {
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    text-align: center;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.doctor-card-content {
-    padding: 10px;
+.doctor-card:hover {
+    transform: translateY(-5px);
 }
 
-.doctor-card img {
+.doctor-image {
     width: 100%;
-    height: 150px;
+    height: 250px;
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    border-bottom: 3px solid #3498db;
 }
 
-.doctor-card h3 {
-    font-size: 1.2em;
-    margin: 10px 0;
+.doctor-specialization {
+    color: #3498db;
+    font-size: 1.1rem;
+    margin: 1rem;
+    font-weight: 600;
 }
 
-.doctor-card p {
-    font-size: 1em;
-    color: #555;
+.doctor-name {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin: 0 1rem 1rem;
+    font-family: 'Roboto', sans-serif;
 }
 
-.doctor-images {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+.channel-now {
+    display: block;
+    width: 90%;
+    margin: 0 auto 1rem;
+    padding: 0.8rem;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
+.channel-now:hover {
+    background: #2980b9;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    #doctorsContainer {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .doctor-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .displayDoctors {
+        padding: 2rem;
+    }
+    
+    .displayDoctors h2 {
+        font-size: 2rem;
+    }
+    
+    .doctor-name {
+        font-size: 1.2rem;
+    }
+    
+    .channel-now {
+        font-size: 1rem;
+    }
+}
 
 .inquiry-box {
     margin-top: 50px;
@@ -267,22 +314,21 @@ nav ul li a:hover {
 }
 
 .inquiry-box button {
-    background-color: transparent; 
+    background-color: transparent;
     color: #007BFF;
-    border: 1px solid #007BFF; 
-    padding: 14px; 
+    border: 1px solid #007BFF;
+    padding: 14px;
     font-size: 16px;
     font-weight: bold;
-    border-radius: 8px; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease, transform 0.2s ease; 
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .inquiry-box button:hover {
-    background-color: #e7f1ff; 
-    transform: scale(1.05); 
+    background-color: #e7f1ff;
+    transform: scale(1.05);
 }
-
 .image-preview-container {
     display: flex;
     flex-wrap: nowrap; 
@@ -355,52 +401,3 @@ footer {
 }
 
 
-@media (max-width: 768px) {
-    .doctor-list {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-
-    .doctor-card {
-        max-width: 270px;
-    }
-
-    .doctor-card img {
-        height: 160px;
-    }
-
-    .doctor-card button {
-        font-size: 13px;
-        padding: 8px 16px;
-    }
-
-    .Dsearch-container {
-        padding: 20px;
-    }
-
-    .search-form {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .doctor-list {
-        grid-template-columns: 1fr;
-    }
-
-    .doctor-card {
-        max-width: 100%;
-    }
-
-    .doctor-card img {
-        height: 140px;
-    }
-
-    .doctor-card button {
-        font-size: 12px;
-        padding: 8px 12px;
-    }
-
-    .Dsearch-container {
-        padding: 15px;
-    }
-}

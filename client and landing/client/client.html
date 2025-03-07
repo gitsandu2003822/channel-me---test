@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,8 @@
     <title>Channel Your Doctor</title>
     <link rel="stylesheet" href="clientStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     
@@ -76,12 +80,45 @@
     <!-- Div to display the search results below the search form -->
     <div id="searchResults" class="search-results-container"></div>
     
-
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <!-- ... (head section remains unchanged) ... -->
+    </head>
+    <body>
     
-    <section class="doctor-list" id="doctorList">
-       
-    </section>
-
+        <!-- ... (nav, header, search form remain unchanged) ... -->
+    
+        <section class="displayDoctors">
+            <h2>Available Doctors</h2>
+            <div id="doctorsContainer"> 
+                <!-- Doctors will be loaded here via AJAX -->
+            </div>
+        </section>
+    
+        <script>
+            $(document).ready(function(){
+                $.ajax({
+                    url: '../backend/viewphp.php', // Adjusted relative path
+                    type: 'POST',
+                    success: function(response) {
+                        $('#doctorsContainer').html(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error:", status, error);
+                        $('#doctorsContainer').html('<p>Failed to load doctors.</p>');
+                    }
+                });
+            });
+        </script>
+    
+        <!-- ... (rest of the HTML remains unchanged) ... -->
+    
+    </body>
+    </html>
+    
+    
+  
    
     <div class="inquiry-box" id="inquiry-box">
         <h3>Send an Inquiry</h3>
