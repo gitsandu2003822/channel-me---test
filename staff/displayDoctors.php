@@ -57,18 +57,19 @@ $result = $conn->query($sql);
         <div class="row">
             <?php while ($row = $result->fetch_assoc()) { ?>
                 <div class="col-md-4 mb-4">
-                    <div class="doctor-card p-3">
-                        <?php 
-                        $images = explode(',', $row['images']); 
-                        $firstImage = !empty($images[0]) ? $images[0] : 'default.png'; 
-                        ?>
-                        <img src="<?php echo $firstImage; ?>" class="doctor-img" alt="Doctor Image">
-                        <h5 class="mt-3">Dr. <?php echo $row['doctor_name']; ?></h5>
-                        <p><strong>Specialization:</strong> <?php echo $row['specialization']; ?></p>
-                        <p><strong>ID:</strong> <?php echo $row['doctor_id']; ?></p>
-                        <a href="channel.php?doctor_id=<?php echo $row['doctor_id']; ?>" class="channel-btn">Channel Now</a>
-                    </div>
-                </div>
+    <div class="doctor-card p-3">
+        <?php 
+        $images = explode(',', $row['images']); 
+        $firstImage = !empty($images[0]) ? $images[0] : 'default.png'; 
+        ?>
+        <img src="<?php echo $firstImage; ?>" class="doctor-img" alt="Doctor Image">
+        <h5 class="mt-3">Dr. <?php echo $row['doctor_name']; ?></h5>
+        <p><strong>Specialization:</strong> <?php echo $row['specialization']; ?></p>
+        <p><strong>ID:</strong> <?php echo $row['doctor_id']; ?></p>
+        <!-- Single Channel Now button -->
+        <a href="appointment.php?doctor_id=<?php echo $row['doctor_id']; ?>" class="channel-btn">Channel Now</a>
+    </div>
+</div>
             <?php } ?>
         </div>
     </div>

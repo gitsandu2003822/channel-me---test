@@ -1,6 +1,5 @@
 <?php
-include '../connection.php';
-// Ensure this file correctly initializes $conn
+include '../../connection.php'; // Ensure this file correctly initializes $conn
 
 $connection = new Connection('localhost', 'root', '', 'channel_me_test');
 $conn = $connection->getConnection();
@@ -19,62 +18,60 @@ $result = $conn->query($sql);
     <title>Channel Your Doctor</title>
     <link rel="stylesheet" href="clientStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-        <style>
-        /* Add to existing styles */
-        .doctor-list-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
+   
+    <style>
         .doctor-card {
-            width: 100%;
-            margin: 15px 0;
-            padding: 20px;
-            background: #ffffff;
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            transition: transform 0.2s;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            background-color: #fff;
+            transition: transform 0.3s ease-in-out;
+            text-align: center;
+            
         }
-
         .doctor-card:hover {
-            transform: translateY(-3px);
+            transform: scale(1.05);
         }
-
-        .doctor-info {
-            flex-grow: 1;
-            padding-left: 25px;
-            text-align: left;
-        }
-
-        .doctor-img-container {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid #007bff;
-        }
-
         .doctor-img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: 250px;
+            object-fit: contain; /* Ensures the image fits well inside the container */
+            border-radius: 10px;
+            background-color: #f8f9fa; /* Light background to handle transparency */
+            padding: 10px;
         }
+        .channel-btn {
+            margin-top: 10px;
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .channel-btn:hover {
+            background-color: #0056b3;
+        }
+        .row {
+    display: flex;
+    flex-direction: column; /* Stack the cards vertically */
+    gap: 20px; /* Add space between each card */
+}
+
+.col-md-4 {
+    width: 50%; /* Ensure the card takes the full width */
+    max-width: none; /* Remove any width constraints */
+}
+
     </style>
 </head>
 <body>
 
     <nav>
 
-    <img src="logo.png" alt="Logo" class="logo">
-
-
+        <img src="/client and landing/landing/Elements/images/logo.png" alt="Logo" class="logo">
 
         <ul>
             <li><a href="/client and landing/landing/landing.html">Home</a></li>
@@ -135,40 +132,30 @@ $result = $conn->query($sql);
     <!-- Div to display the search results below the search form -->
     <div id="searchResults" class="search-results-container"></div>
     
-    <div class="container py-5 doctor-list-container">
-    <h2 class="text-center mb-4">Doctors List</h2>
-    <div class="doctor-list">
-        <?php while ($row = $result->fetch_assoc()) { ?>
-            <div class="doctor-card">
-                <div class="doctor-img-container">
-                    <?php 
-                    $images = explode(',', $row['images']);
-                    // Adjust path for 2-level nesting
-                    $firstImage = !empty($images[0]) ? 
-                        "../../uploads/doctors/" . $images[0] : // Go up two directories
-                        "../../default.png"; // Default image path
-                    ?>
-                    <img src="<?php echo $firstImage; ?>" class="doctor-img" alt="Doctor Image">
-                    <!-- For debugging: <?php echo $firstImage; ?> -->
-                </div>
-                <div class="doctor-info">
-                    <h3>Dr. <?php echo $row['doctor_name']; ?></h3>
-                    <p><strong>Specialization:</strong> <?php echo $row['specialization']; ?></p>
-                    <p><strong>ID:</strong> <?php echo $row['doctor_id']; ?></p>
-                    <a href="channel.php?doctor_id=<?php echo $row['doctor_id']; ?>" class="channel-btn">
-                        <i class="fas fa-calendar-check"></i> Channel Now
-                    </a>
-                </div>
-            </div>
-        <?php } ?>
-    </div>
-</div>
-           
+  
 
         <!-- ... (rest of the HTML remains unchanged) ... -->
-    
-    
-    
+        <div class="container py-5">
+        <h2 class="text-center mb-4">Doctors List</h2>
+        <div class="row">
+            <?php while ($row = $result->fetch_assoc()) { ?>
+                <div class="col-md-4 mb-4">
+    <div class="doctor-card p-3">
+        <?php 
+        $images = explode(',', $row['images']); 
+        $firstImage = !empty($images[0]) ? $images[0] : 'default.png'; 
+        ?>
+        <img src="<?php echo $firstImage; ?>" class="doctor-img" alt="Doctor Image">
+        <h5 class="mt-3">Dr. <?php echo $row['doctor_name']; ?></h5>
+        <p><strong>Specialization:</strong> <?php echo $row['specialization']; ?></p>
+        <p><strong>ID:</strong> <?php echo $row['doctor_id']; ?></p>
+        <!-- Single Channel Now button -->
+        <a href="appointment.php?doctor_id=<?php echo $row['doctor_id']; ?>" class="channel-btn">Channel Now</a>
+    </div>
+</div>
+            <?php } ?>
+        </div>
+    </div>
   
    
     <div class="inquiry-box" id="inquiry-box">
@@ -202,3 +189,7 @@ $result = $conn->query($sql);
 
 </body>
 </html>
+<?php
+$conn->close();
+?>
+

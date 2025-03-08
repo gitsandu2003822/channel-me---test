@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    padding: 0 20px;
+    margin: 0;
+}
+
+header {
+    background-color: #007BFF;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    background-color: white;
+    color: rgb(19, 1, 1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    height: 80px;
+    width: 100%;
+    margin: 0;
+}
+
+nav .logo {
+    height: 70px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(19, 1, 1);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 10px 14px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    color: #3498db;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px 18px;
+    border: 2px solid #3498db;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar {
+    padding: 10px;
+    border: none;
+    outline: none;
+    width: 250px;
+    font-size: 16px;
+}
+
+.search-btn {
+    background-color: #f39c12;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #e67e22;
+}
+
+.sign-in-btn {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-left: 20px;
+}
+
+.sign-in-btn:hover {
+    background-color: #3498db;
+}
