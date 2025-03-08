@@ -28,13 +28,13 @@ $result = $conn->query($sql);
             transform: scale(1.05);
         }
         .doctor-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-    border-radius: 10px;
-    display: block;
-}
-
+            width: 100%;
+            height: 250px;
+            object-fit: contain; /* Ensures the image fits well inside the container */
+            border-radius: 10px;
+            background-color: #f8f9fa; /* Light background to handle transparency */
+            padding: 10px;
+        }
         .channel-btn {
             margin-top: 10px;
             display: inline-block;

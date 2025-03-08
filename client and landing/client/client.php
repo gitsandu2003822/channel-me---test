@@ -1,3 +1,13 @@
+<?php
+include '../connection.php';
+// Ensure this file correctly initializes $conn
+
+$connection = new Connection('localhost', 'root', '', 'channel_me_test');
+$conn = $connection->getConnection();
+
+$sql = "SELECT * FROM adddoctors";
+$result = $conn->query($sql);
+?>
 
 
 
@@ -9,17 +19,62 @@
     <title>Channel Your Doctor</title>
     <link rel="stylesheet" href="clientStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    
+        <style>
+        /* Add to existing styles */
+        .doctor-list-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .doctor-card {
+            width: 100%;
+            margin: 15px 0;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .doctor-info {
+            flex-grow: 1;
+            padding-left: 25px;
+            text-align: left;
+        }
+
+        .doctor-img-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #007bff;
+        }
+
+        .doctor-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
 
     <nav>
 
-        <img src="/client and landing/landing/Elements/images/logo.png" alt="Logo" class="logo">
+    <img src="logo.png" alt="Logo" class="logo">
+
+
 
         <ul>
             <li><a href="/client and landing/landing/landing.html">Home</a></li>
@@ -80,20 +135,35 @@
     <!-- Div to display the search results below the search form -->
     <div id="searchResults" class="search-results-container"></div>
     
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <!-- ... (head section remains unchanged) ... -->
-    </head>
-    <body>
-    
-        <!-- ... (nav, header, search form remain unchanged) ... -->
-    
-        <section class="displayDoctors">
-    <h2>Available Doctors</h2>
-    <div id="doctorsContainer"></div>
-</section>
-
+    <div class="container py-5 doctor-list-container">
+    <h2 class="text-center mb-4">Doctors List</h2>
+    <div class="doctor-list">
+        <?php while ($row = $result->fetch_assoc()) { ?>
+            <div class="doctor-card">
+                <div class="doctor-img-container">
+                    <?php 
+                    $images = explode(',', $row['images']);
+                    // Adjust path for 2-level nesting
+                    $firstImage = !empty($images[0]) ? 
+                        "../../uploads/doctors/" . $images[0] : // Go up two directories
+                        "../../default.png"; // Default image path
+                    ?>
+                    <img src="<?php echo $firstImage; ?>" class="doctor-img" alt="Doctor Image">
+                    <!-- For debugging: <?php echo $firstImage; ?> -->
+                </div>
+                <div class="doctor-info">
+                    <h3>Dr. <?php echo $row['doctor_name']; ?></h3>
+                    <p><strong>Specialization:</strong> <?php echo $row['specialization']; ?></p>
+                    <p><strong>ID:</strong> <?php echo $row['doctor_id']; ?></p>
+                    <a href="channel.php?doctor_id=<?php echo $row['doctor_id']; ?>" class="channel-btn">
+                        <i class="fas fa-calendar-check"></i> Channel Now
+                    </a>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+           
 
         <!-- ... (rest of the HTML remains unchanged) ... -->
     
