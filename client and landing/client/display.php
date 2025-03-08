@@ -1,29 +1,37 @@
 <?php
-include 'connection.php'; // Ensure the database connection is properly included
+include 'connection.php';
+include '../addDoctors.php';
 
-$connection = new Connection('localhost', 'root', '', 'channel_me_test');
-$conn = $connection->getConnection();
+$conn = new Connection('localhost', 'root', '', 'channel_me_test');
+$db = $conn->getConnection();
+
+$specialization = isset($_GET['specialization']) && $_GET['specialization'] !== "" ? $_GET['specialization'] : null;
 
 $sql = "SELECT doctor_id, doctor_name, specialization, images FROM adddoctors";
-$result = $conn->query($sql);
+if ($specialization) {
+    $sql .= " WHERE specialization = ?";
+}
+
+$stmt = $db->prepare($sql);
+if ($specialization) {
+    $stmt->bind_param("s", $specialization);
+}
+$stmt->execute();
+$result = $stmt->get_result();
 
 $doctors = [];
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        // Get images (assuming stored as comma-separated values)
-        $images = explode(",", $row["images"]);
-        $image_url = !empty($images[0]) ? $images[0] : "d1.webp";
+while ($row = $result->fetch_assoc()) {
+    $images = explode(",", $row["images"]);
+    $image_url = !empty($images[0]) ? $images[0] : "d1.webp";
 
-        $doctors[] = [
-            "id" => $row["doctor_id"],
-            "name" => $row["doctor_name"],
-            "specialization" => $row["specialization"],
-            "image" => $image_url
-        ];
-    }
+    $doctors[] = [
+        "id" => $row["doctor_id"],
+        "name" => $row["doctor_name"],
+        "specialization" => $row["specialization"],
+        "image" => $image_url
+    ];
 }
 
-$conn->close();
 echo json_encode($doctors);
 ?>

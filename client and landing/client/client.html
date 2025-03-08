@@ -94,29 +94,6 @@
     <div id="doctorsContainer"></div>
 </section>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        fetch("display.php") // Fetch doctor data from the PHP script
-            .then(response => response.json())
-            .then(doctors => {
-                const doctorsContainer = document.getElementById("doctorsContainer");
-                doctorsContainer.innerHTML = ""; // Clear existing content
-
-                doctors.forEach(doctor => {
-                    const card = document.createElement("div");
-                    card.classList.add("doctor-card");
-                    card.innerHTML = `
-                        <img src="${doctor.image}" alt="${doctor.name}">
-                        <h3>${doctor.name}</h3>
-                        <p>${doctor.specialization}</p>
-                        <a href="channel.php?doctor_id=${doctor.id}" class="channel-btn">Channel</a>
-                    `;
-                    doctorsContainer.appendChild(card);
-                });
-            })
-            .catch(error => console.error("Error fetching doctors:", error));
-    });
-</script>
 
         <!-- ... (rest of the HTML remains unchanged) ... -->
     

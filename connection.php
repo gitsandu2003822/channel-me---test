@@ -23,8 +23,7 @@ class Connection {
 
         if ($this->connection->connect_error) {
             die("Connection failed: " . $this->connection->connect_error);
-        }
-         else {
+        } else {
             echo "Connection successful";
         }
     }

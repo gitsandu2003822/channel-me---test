@@ -74,3 +74,31 @@ function updateImagePreview() {
 // Function to perform the search when the search button is clicked
 // Function to perform the search when the search button is clicked
 // Function to perform the search when the search button is clicked
+function searchDoctors() {
+    const specialization = document.getElementById("specialization").value;
+
+    fetch("display.php?specialization=" + encodeURIComponent(specialization))
+        .then(response => response.json())
+        .then(doctors => {
+            const doctorsContainer = document.getElementById("doctorsContainer");
+            doctorsContainer.innerHTML = ""; // Clear existing results
+
+            if (doctors.length === 0) {
+                doctorsContainer.innerHTML = "<p>No doctors found.</p>";
+                return;
+            }
+
+            doctors.forEach(doctor => {
+                const card = document.createElement("div");
+                card.classList.add("doctor-card");
+                card.innerHTML = `
+                    <img src="${doctor.image}" alt="${doctor.name}" class="doctor-image">
+                    <h3>${doctor.name}</h3>
+                    <p>${doctor.specialization}</p>
+                    <a href="channel.php?doctor_id=${doctor.id}" class="channel-btn">Channel</a>
+                `;
+                doctorsContainer.appendChild(card);
+            });
+        })
+        .catch(error => console.error("Error fetching doctors:", error));
+}
