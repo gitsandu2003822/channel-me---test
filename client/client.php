@@ -1,5 +1,5 @@
 <?php
-include '../../connection.php'; // Ensure this file correctly initializes $conn
+include '../connection.php'; // Ensure this file correctly initializes $conn
 
 $connection = new Connection('localhost', 'root', '', 'channel_me_test');
 $conn = $connection->getConnection();
@@ -20,50 +20,68 @@ $result = $conn->query($sql);
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
    
     <style>
-        .doctor-card {
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            background-color: #fff;
-            transition: transform 0.3s ease-in-out;
-            text-align: center;
-            
-        }
-        .doctor-card:hover {
-            transform: scale(1.05);
-        }
-        .doctor-img {
-            width: 100%;
-            height: 250px;
-            object-fit: contain; /* Ensures the image fits well inside the container */
-            border-radius: 10px;
-            background-color: #f8f9fa; /* Light background to handle transparency */
-            padding: 10px;
-        }
-        .channel-btn {
-            margin-top: 10px;
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .channel-btn:hover {
-            background-color: #0056b3;
-        }
-        .row {
+      .container {
     display: flex;
-    flex-direction: column; /* Stack the cards vertically */
-    gap: 20px; /* Add space between each card */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
-.col-md-4 {
-    width: 50%; /* Ensure the card takes the full width */
-    max-width: none; /* Remove any width constraints */
+.doctor-card {
+    width: 300px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.doctor-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.channel-btn {
+    display: block;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background 0.3s;
+    font-weight: bold;
+}
+
+.channel-btn:hover {
+    background-color: #0056b3;
+}
+
 
     </style>
 </head>
@@ -71,7 +89,7 @@ $result = $conn->query($sql);
 
     <nav>
 
-        <img src="/client and landing/landing/Elements/images/logo.png" alt="Logo" class="logo">
+    <img src="/client and landing/landing/Elements/images/logo.png" alt="Logo" class="logo">
 
         <ul>
             <li><a href="/client and landing/landing/landing.html">Home</a></li>
@@ -145,7 +163,8 @@ $result = $conn->query($sql);
         $images = explode(',', $row['images']); 
         $firstImage = !empty($images[0]) ? $images[0] : 'default.png'; 
         ?>
-        <img src="<?php echo $firstImage; ?>" class="doctor-img" alt="Doctor Image">
+      <img src="<?php echo 'images/' . $firstImage; ?>" class="doctor-img" alt="Doctor Image">
+
         <h5 class="mt-3">Dr. <?php echo $row['doctor_name']; ?></h5>
         <p><strong>Specialization:</strong> <?php echo $row['specialization']; ?></p>
         <p><strong>ID:</strong> <?php echo $row['doctor_id']; ?></p>
