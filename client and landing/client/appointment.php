@@ -1,5 +1,5 @@
 <?php
-include '../connection.php';
+include '../../connection.php';
 
 
 
@@ -86,7 +86,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <nav>
 
-<img src="/client and landing/landing/Elements/images/logo.png" alt="Logo" class="logo">
+<img src="/Elements/images/logo.png" alt="Logo" class="logo">
 
 <ul>
     <li><a href="/client and landing/landing/landing.html">Home</a></li>

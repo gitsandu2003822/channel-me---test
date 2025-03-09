@@ -1,5 +1,5 @@
 <?php
-include '../connection.php'; // Ensure this file correctly initializes $conn
+include '../../connection.php'; // Ensure this file correctly initializes $conn
 
 $connection = new Connection('localhost', 'root', '', 'channel_me_test');
 $conn = $connection->getConnection();
@@ -22,14 +22,23 @@ $result = $conn->query($sql);
     <style>
       .container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Prevents wrapping */
     justify-content: center;
+    overflow-x: auto; /* Enables horizontal scrolling if necessary */
     gap: 20px;
     padding: 20px;
+    margin-top: 40px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: nowrap; /* Keeps all cards in a single row */
+    justify-content: center;
+    gap: 20px;
 }
 
 .doctor-card {
-    width: 300px;
+    flex: 0 0 700px; /* Prevents shrinking and ensures equal width */
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
@@ -37,6 +46,7 @@ $result = $conn->query($sql);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .doctor-card:hover {
     transform: translateY(-5px);
@@ -56,6 +66,10 @@ h5 {
     font-weight: bold;
     color: #333;
     margin-bottom: 8px;
+}
+h3{
+    font-size: 35px;
+    margin-bottom: 500px;
 }
 
 p {
@@ -89,7 +103,7 @@ p {
 
     <nav>
 
-    <img src="/client and landing/landing/Elements/images/logo.png" alt="Logo" class="logo">
+    <img src="Elements/images/logo.png" alt="Logo" class="logo">
 
         <ul>
             <li><a href="/client and landing/landing/landing.html">Home</a></li>
@@ -151,10 +165,10 @@ p {
     <div id="searchResults" class="search-results-container"></div>
     
   
-
+    <h3 class="text-center mb-4" style="text-align: center; margin-bottom: 20px;">Doctors List</h3>
         <!-- ... (rest of the HTML remains unchanged) ... -->
         <div class="container py-5">
-        <h2 class="text-center mb-4">Doctors List</h2>
+       
         <div class="row">
             <?php while ($row = $result->fetch_assoc()) { ?>
                 <div class="col-md-4 mb-4">
@@ -163,8 +177,7 @@ p {
         $images = explode(',', $row['images']); 
         $firstImage = !empty($images[0]) ? $images[0] : 'default.png'; 
         ?>
-      <img src="<?php echo 'images/' . $firstImage; ?>" class="doctor-img" alt="Doctor Image">
-
+       <img src="<?php echo $firstImage; ?>" class="doctor-img" alt="Doctor Image">
         <h5 class="mt-3">Dr. <?php echo $row['doctor_name']; ?></h5>
         <p><strong>Specialization:</strong> <?php echo $row['specialization']; ?></p>
         <p><strong>ID:</strong> <?php echo $row['doctor_id']; ?></p>

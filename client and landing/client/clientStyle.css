@@ -186,11 +186,12 @@ nav ul li a:hover {
 }
 /* ===== Doctors Section Styling ===== */
 
-.inquiry-box{
-
+.inquiry-box {
     margin-left: 400px;
     width: 50%;
+    padding-top: 50px; /* Adds space above the box */
 }
+
 .inquiry-box h3 {
     font-family: 'Poppins', sans-serif;
     text-align: center;
