@@ -103,8 +103,7 @@ p {
 
     <nav>
 
-    <img src="Elements/images/logo.png" alt="Logo" class="logo">
-
+    <img src="/client and landing/landing/Elements/image/logo.png" alt="Logo" class="logo">
         <ul>
             <li><a href="/client and landing/landing/landing.html">Home</a></li>
             <li><a href="/client and landing/landing/landing.html#container">About us</a></li>
