@@ -1,14 +1,16 @@
 <?php
-include '../../connection.php'; // Ensure this file correctly initializes $conn
+include '../../connection.php';
 
 $connection = new Connection('localhost', 'root', '', 'channel_me_test');
 $conn = $connection->getConnection();
 
+// Get all doctors
 $sql = "SELECT * FROM adddoctors";
 $result = $conn->query($sql);
+
+// Get unique specializations for dropdown
+$specializations = $conn->query("SELECT DISTINCT specialization FROM adddoctors ORDER BY specialization");
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -97,6 +99,7 @@ p {
 }
 
 
+
     </style>
 </head>
 <body>
@@ -132,61 +135,116 @@ p {
     </header>
 
     
-    <div class="Dsearch-container">
-        <h2>Find Your Doctor</h2>
-        <p class="search-description">Search for doctors based on specialization, hospital, or location.</p>
-    
-        <div class="search-form">
-            <!-- Specialization Selection -->
-            <label for="specialization">Select Specialization</label>
-            <select id="specialization">
-                <option value="">Any Specialization</option>
-                <option value="General Practitioner">General Practitioner</option>
-                <option value="Cardiology">Cardiology</option>
-                <option value="Dermatology">Dermatology</option>
-                <option value="Neurology">Neurology</option>
-                <option value="Psychiatry">Psychiatry</option>
-                <option value="Pulmonologist">Pulmonologist</option>
-                <option value="Dermatologist">Dermatologist</option>
-                <option value="Emergency Medicine">Emergency Medicine</option>
-            </select>
-    
-            <!-- Date Selection -->
-            <label for="appointment-date">Select Date</label>
-            <input id="appointment-date" type="date">
-    
-            <!-- Search Button -->
-            <button onclick="searchDoctors()">🔍 Search</button>
+    <div class="container py-5">
+    <!-- Search Filter -->
+    <div class="specialization-filter">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="filter-group">
+                    <select class="specialization-select" id="specializationFilter">
+                        <option value="">All Specializations</option>
+                        <?php while($spec = $specializations->fetch_assoc()): ?>
+                            <option value="<?= $spec['specialization'] ?>">
+                                <?= $spec['specialization'] ?>
+                            </option>
+                        <?php endwhile; ?>
+                    </select>
+                    <button class="filter-button" type="button" onclick="filterDoctors()">
+                        Search
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <!-- Div to display the search results below the search form -->
-    <div id="searchResults" class="search-results-container"></div>
-    
-  
-    <h3 class="text-center mb-4" style="text-align: center; margin-bottom: 20px;">Doctors List</h3>
-        <!-- ... (rest of the HTML remains unchanged) ... -->
-        <div class="container py-5">
-       
-        <div class="row">
-            <?php while ($row = $result->fetch_assoc()) { ?>
-                <div class="col-md-4 mb-4">
-    <div class="doctor-card p-3">
-        <?php 
-        $images = explode(',', $row['images']); 
-        $firstImage = !empty($images[0]) ? $images[0] : 'default.png'; 
-        ?>
-       <img src="<?php echo $firstImage; ?>" class="doctor-img" alt="Doctor Image">
-        <h5 class="mt-3">Dr. <?php echo $row['doctor_name']; ?></h5>
-        <p><strong>Specialization:</strong> <?php echo $row['specialization']; ?></p>
-        <p><strong>ID:</strong> <?php echo $row['doctor_id']; ?></p>
-        <!-- Single Channel Now button -->
-        <a href="appointment.php?doctor_id=<?php echo $row['doctor_id']; ?>" class="channel-btn">Channel Now</a>
-    </div>
+
+    <style>
+    .specialization-filter {
+        margin: 30px 0;
+    }
+
+    .filter-group {
+        display: flex;
+        gap: 10px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .specialization-select {
+        flex: 1;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px 15px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .filter-button {
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    .filter-button:hover {
+        background: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        .filter-group {
+            flex-direction: column;
+        }
+        
+        .filter-button {
+            width: 100%;
+        }
+    }
+    </style>
 </div>
-            <?php } ?>
+        <h2 class="text-center mb-4">Doctors List</h2>
+        <div class="row" id="doctorContainer">
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <div class="col-md-4 mb-4">
+                    <div class="doctor-card p-3">
+                        <?php 
+                        $images = explode(',', $row['images']); 
+                        $firstImage = !empty($images[0]) ? $images[0] : 'default.png'; 
+                        ?>
+                        <img src="<?= $firstImage ?>" class="doctor-img" alt="Doctor Image">
+                        <h5 class="mt-3">Dr. <?= $row['doctor_name'] ?></h5>
+                        <p><strong>Specialization:</strong> <?= $row['specialization'] ?></p>
+                        <p><strong>ID:</strong> <?= $row['doctor_id'] ?></p>
+                        <a href="appointment.php?doctor_id=<?= $row['doctor_id'] ?>" class="channel-btn">
+                            Channel Now
+                        </a>
+                    </div>
+                </div>
+            <?php endwhile; ?>
         </div>
     </div>
+
+    <script>
+    function filterDoctors() {
+        const specialization = document.getElementById('specializationFilter').value.toLowerCase();
+        const doctorCards = document.querySelectorAll('.col-md-4');
+        
+        doctorCards.forEach(card => {
+            const cardSpecialization = card.querySelector('p:nth-of-type(1)').textContent
+                .split(':')[1]
+                .trim()
+                .toLowerCase();
+            
+            if (specialization === '' || cardSpecialization === specialization) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    </script>
   
    
     <div class="inquiry-box" id="inquiry-box">
