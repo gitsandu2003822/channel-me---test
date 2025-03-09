@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Dashboard</title>
+    <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="addRemoveStaff.css">
@@ -93,18 +93,18 @@
 
     
     <div class="container mt-4" style="border-color: black;box-sizing: border-box;border-width: 2ch;">
-        <h4 class="mb-3">Add a Doctor</h4>
+        <h4 class="mb-3">Add a staff member</h4>
         <form id="addDoctorForm" class="row g-3">
             <div class="col-md-4">
-                <label for="doctorId" class="form-label">Doctor ID</label>
+                <label for="doctorId" class="form-label">Staff ID</label>
                 <input type="text" class="form-control" id="doctorId" required>
             </div>
             <div class="col-md-4">
-                <label for="doctorName" class="form-label">Doctor Name</label>
+                <label for="doctorName" class="form-label">Staff Name</label>
                 <input type="text" class="form-control" id="doctorName" required>
             </div>
             <div class="col-md-4">
-                <label for="specialization" class="form-label">Specialization</label>
+                <label for="specialization" class="form-label">position</label>
                 <input type="text" class="form-control" id="specialization" required>
             </div>
             <div class="col-md-4">
@@ -113,8 +113,8 @@
             </div>
             <div id="selectedImageContainer" class="image-preview-container"></div>
             <div class="col-12 mt-5"> 
-                <button type="submit" class="btn btn-primary me-3">Add Doctor</button>
-                <button type="button" class="btn btn-danger" id="removeDoctor">Remove Doctor</button>
+                <button type="submit" class="btn btn-primary me-3">Add member</button>
+                <button type="button" class="btn btn-danger" id="removeDoctor">Remove member</button>
             </div>
         </form>
     </div>
